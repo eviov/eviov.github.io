@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["FromClient",""],["FromServer",""]],"struct":[["Control",""],["Handshake",""],["HandshakeRequest",""],["HandshakeResponse",""],["Update",""]]});
+initSidebarItems({"enum":[["FromClient",""],["FromServer",""]],"struct":[["Control","Describes the client's request to update control states."],["Handshake","Requests control on an object."],["HandshakeRequest",""],["HandshakeResponse",""],["Update","Reports updates to the control states of the controlled object."]]});

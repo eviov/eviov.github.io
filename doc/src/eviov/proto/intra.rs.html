@@ -35,36 +35,66 @@
 <span id="35">35</span>
 <span id="36">36</span>
 <span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
 </pre><div class="example-wrap"><pre class="rust ">
-<span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">math</span>::<span class="ident">Eci</span>;
+<span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">math</span>::{<span class="ident">Eci</span>, <span class="ident">Time</span>};
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">ObjectId</span>;
 
 <span class="comment">// Server = parent large body, Client = child large body</span>
 
 <span class="ident">codegen</span>::<span class="macro">proto</span><span class="macro">!</span> {
+    <span class="doccomment">/// Binds the connection to a child.</span>
     <span class="ident">client</span> <span class="ident">message</span> <span class="ident">Handshake</span> {
+        <span class="doccomment">/// The system of the child</span>
         <span class="ident">system</span>: <span class="ident">ObjectId</span>,
     }
 
+    <span class="doccomment">/// Requests the ECI position and velocity of the child.</span>
     <span class="ident">client</span> <span class="ident">query</span> <span class="ident">WhereMe</span> {} <span class="op">-</span><span class="op">&gt;</span> {
+        <span class="doccomment">/// Thr game time when the child was at the ECI posvel</span>
+        <span class="ident">time</span>: <span class="ident">Time</span>,
+        <span class="doccomment">/// The ECI position and velocity of the child</span>
         <span class="ident">eci</span>: <span class="ident">Eci</span>,
     }
 
+    <span class="doccomment">/// Allows a session to observing this system.</span>
     <span class="ident">mutual</span> <span class="ident">query</span> <span class="ident">AllowObserve</span> {
+        <span class="doccomment">/// The session to allow</span>
         <span class="ident">session</span>: <span class="ident">u64</span>,
     } <span class="op">-</span><span class="op">&gt;</span> {}
 
+    <span class="doccomment">/// Denies a session from observing this system.</span>
     <span class="ident">mutual</span> <span class="ident">message</span> <span class="ident">RevokeObserve</span> {
+        <span class="doccomment">/// The session to deny</span>
         <span class="ident">session</span>: <span class="ident">u64</span>,
     }
 
     <span class="ident">mutual</span> <span class="ident">query</span> <span class="ident">TransferChild</span> {
+        <span class="doccomment">/// A full copy of the object to transfer</span>
         <span class="ident">object</span>: <span class="ident">FullObject</span>,
     } <span class="op">-</span><span class="op">&gt;</span> {
         <span class="comment">// ACK is needed. If no ACK, perform smooth collision.</span>
     }
 
-    <span class="ident">server</span> <span class="ident">message</span> <span class="ident">TransferYou</span>  {
+    <span class="doccomment">/// Notifies that the child is to be transferred to a new system.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The connection should be closed upon this message.j</span>
+    <span class="ident">server</span> <span class="ident">message</span> <span class="ident">TransferYou</span> {
+        <span class="doccomment">/// The object to transfer to</span>
         <span class="ident">dest</span>: <span class="ident">ObjectId</span>,
     }
 }

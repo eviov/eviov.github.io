@@ -5,11 +5,15 @@
 <span id="5">5</span>
 <span id="6">6</span>
 <span id="7">7</span>
+<span id="8">8</span>
+<span id="9">9</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">math</span>::<span class="ident">Time</span>;
 
 <span class="ident">codegen</span>::<span class="macro">proto</span><span class="macro">!</span> {
+    <span class="doccomment">/// Queries the current game time</span>
     <span class="ident">client</span> <span class="ident">query</span> <span class="ident">Ask</span> {} <span class="op">-</span><span class="op">&gt;</span> {
+        <span class="doccomment">/// The current gsme time when the server received the query</span>
         <span class="ident">time</span>: <span class="ident">Time</span>,
     }
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-0.2.10/src/signal/unix.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>unix.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../tokio/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-0.2.11/src/signal/unix.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>unix.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../tokio/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -728,7 +728,7 @@
     <span class="ident">drop</span>(<span class="ident">sender</span>.<span class="ident">write</span>(<span class="kw-2">&amp;</span>[<span class="number">1</span>]));
 }
 
-<span class="doccomment">/// Enable this module to receive signal notifications for the `signal`</span>
+<span class="doccomment">/// Enables this module to receive signal notifications for the `signal`</span>
 <span class="doccomment">/// provided.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This will register the signal handler if it hasn&#39;t already been registered,</span>
@@ -757,7 +757,7 @@
     });
     <span class="ident">registered</span><span class="question-mark">?</span>;
     <span class="comment">// If the call_once failed, it won&#39;t be retried on the next attempt to register the signal. In</span>
-    <span class="comment">// such case it is not run, registered is still `Ok(())`, initialized is still false.</span>
+    <span class="comment">// such case it is not run, registered is still `Ok(())`, initialized is still `false`.</span>
     <span class="kw">if</span> <span class="ident">siginfo</span>.<span class="ident">initialized</span>.<span class="ident">load</span>(<span class="ident">Ordering</span>::<span class="ident">Relaxed</span>) {
         <span class="prelude-val">Ok</span>(())
     } <span class="kw">else</span> {
@@ -935,7 +935,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Signal</span> {
-    <span class="doccomment">/// Receive the next signal notification event.</span>
+    <span class="doccomment">/// Receives the next signal notification event.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// `None` is returned if no more events can be received by this stream.</span>
     <span class="doccomment">///</span>
@@ -963,7 +963,7 @@
         <span class="ident">poll_fn</span>(<span class="op">|</span><span class="ident">cx</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">poll_recv</span>(<span class="ident">cx</span>)).<span class="kw">await</span>
     }
 
-    <span class="doccomment">/// Poll to receive the next signal notification event, outside of an</span>
+    <span class="doccomment">/// Polls to receive the next signal notification event, outside of an</span>
     <span class="doccomment">/// `async` context.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// `None` is returned if no more events can be received by this stream.</span>
