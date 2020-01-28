@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["ComponentEvent",""],["EntityEvent",""],["EntityFilterEvent",""]],"struct":[["Channel","This queue performs per-listener queueing using a crossbeam `ArrayQueue`, pre-defined to an upper limit of messages allowed."],["ListenerId",""],["WorldCreatedEvent",""]]});

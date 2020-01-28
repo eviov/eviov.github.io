@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Entity","A handle to an entity."],["EntityAllocator","Manages the allocation and deletion of `Entity` IDs within a world."]]});

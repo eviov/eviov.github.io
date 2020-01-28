@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Message",""],["TickAction",""]],"fn":[["handle_event",""],["run",""],["run_impl",""]],"struct":[["Closed",""],["Event",""],["EventId",""],["Handle",""],["Tag",""]],"trait":[["Extra",""]]});

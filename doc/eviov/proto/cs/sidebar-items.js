@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["ChannelType",""],["FromClient",""],["FromServer",""]],"mod":[["ctrl",""],["obs",""]],"struct":[["ChannelId",""],["CtrlClient",""],["CtrlServer",""],["ObsClient",""],["ObsServer",""],["OpenChannel",""],["OpenChannelRequest",""],["OpenChannelResponse",""]]});

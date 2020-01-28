@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["borrow","Atomic runtime borrow checking module. These types implement something akin to `RefCell`, but are atomically handled allowing them to cross thread boundaries."],["command",""],["entity",""],["event",""],["filter",""],["iterator",""],["prelude",""],["query",""],["resource",""],["schedule",""],["storage",""],["system",""],["world",""]]});

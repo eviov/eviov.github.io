@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["EventContent",""],["FromClient",""],["FromServer",""]],"struct":[["Close",""],["Event",""],["Handshake",""],["HandshakeRequest",""],["HandshakeResponse",""]]});
