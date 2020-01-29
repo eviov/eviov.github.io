@@ -43,8 +43,13 @@
 <span id="43">43</span>
 <span id="44">44</span>
 <span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>, <span class="ident">unused_variables</span>)]</span>
+<span class="attribute">#![<span class="ident">warn</span>(<span class="ident">unused_results</span>)]</span>
 
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">sync</span>::<span class="ident">Arc</span>;
@@ -67,7 +72,7 @@
     <span class="kw">let</span> (<span class="ident">clock</span>, <span class="ident">src</span>) <span class="op">=</span> <span class="ident">create_clock</span>().<span class="kw">await</span>;
     <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">src</span>) <span class="op">=</span> <span class="ident">src</span> {
         <span class="kw">let</span> <span class="ident">clock</span> <span class="op">=</span> <span class="ident">clock</span>.<span class="ident">clone</span>();
-        <span class="ident">thread</span>::<span class="ident">spawn</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
+        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">thread</span>::<span class="ident">spawn</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
             <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">time</span>::<span class="ident">Duration</span>;
 
             <span class="kw">use</span> <span class="ident">eviov</span>::<span class="ident">LoopAction</span>;
@@ -78,7 +83,10 @@
                 <span class="ident">LoopAction</span>::<span class="ident">Continue</span>
             }
 
-            <span class="ident">futures</span>::<span class="ident">executor</span>::<span class="ident">block_on</span>(<span class="ident">clock</span>.<span class="ident">maintain</span>(<span class="ident">src</span>, <span class="ident">delay_fn</span>));
+            <span class="kw">loop</span> {
+                <span class="kw">let</span> <span class="ident">_cm</span> <span class="op">=</span> <span class="ident">futures</span>::<span class="ident">executor</span>::<span class="ident">block_on</span>(<span class="ident">clock</span>.<span class="ident">maintain</span>(<span class="ident">src</span>, <span class="ident">delay_fn</span>));
+                <span class="macro">unimplemented</span><span class="macro">!</span>(<span class="string">&quot;Handle _cm&quot;</span>)
+            }
         });
     }
     <span class="kw">let</span> <span class="ident">runtime</span> <span class="op">=</span> <span class="ident">universe</span>::<span class="ident">Runtime</span>::<span class="op">&lt;</span><span class="ident">X</span>::<span class="ident">SystemExtra</span><span class="op">&gt;</span>::<span class="ident">new</span>(<span class="ident">clock</span>);
