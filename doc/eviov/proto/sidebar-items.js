@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["ch",""],["cs",""],["intra",""],["sh",""],["time",""]],"struct":[["StdwebWs",""]],"trait":[["Handler",""],["Message",""],["Protocol",""],["Query",""],["WsClient",""]]});
+initSidebarItems({"enum":[["QueryError",""]],"mod":[["ch",""],["cs",""],["intra",""],["sh",""],["time",""]],"struct":[["Conn",""],["QueryId",""],["StdwebWs",""]],"trait":[["ClientMessage",""],["Handler",""],["Message",""],["Protocol",""],["Query",""],["QueryRequest",""],["QueryResponse",""],["ServerMessage",""],["Single",""],["WsClient",""]]});
