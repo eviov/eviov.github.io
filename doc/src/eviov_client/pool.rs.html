@@ -60,29 +60,29 @@
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">collections</span>::<span class="ident">HashMap</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">hash</span>::{<span class="ident">Hash</span>, <span class="ident">Hasher</span>};
 
-<span class="kw">use</span> <span class="ident">eviov</span>::<span class="ident">SystemId</span>;
+<span class="kw">use</span> <span class="ident">eviov</span>::<span class="ident">ObjectId</span>;
 
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">conn</span>::<span class="ident">Conn</span>;
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Default</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ConnPool</span> {
     <span class="ident">conns</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">Conn</span><span class="op">&gt;</span>,
-    <span class="ident">systems</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">SystemId</span>, <span class="ident">SystemHandle</span><span class="op">&gt;</span>,
+    <span class="ident">systems</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">ObjectId</span>, <span class="ident">SystemHandle</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">ConnPool</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">id</span>: <span class="ident">SystemId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">SystemHandle</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">id</span>: <span class="ident">ObjectId</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">SystemHandle</span><span class="op">&gt;</span> {
         <span class="self">self</span>.<span class="ident">systems</span>.<span class="ident">get</span>(<span class="kw-2">&amp;</span><span class="ident">id</span>)
     }
 }
 
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SystemHandle</span> {
     <span class="ident">conn</span>: <span class="ident">Conn</span>,
-    <span class="ident">id</span>: <span class="ident">SystemId</span>,
+    <span class="ident">id</span>: <span class="ident">ObjectId</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">SystemHandle</span> {
-    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">open</span>(<span class="ident">id</span>: <span class="ident">SystemId</span>, <span class="ident">conn</span>: <span class="ident">Conn</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+    <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">open</span>(<span class="ident">id</span>: <span class="ident">ObjectId</span>, <span class="ident">conn</span>: <span class="ident">Conn</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="comment">// TODO handshake logic</span>
         <span class="self">Self</span> { <span class="ident">id</span>, <span class="ident">conn</span> }
     }

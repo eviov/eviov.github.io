@@ -431,13 +431,13 @@
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">client</span> <span class="op">=</span> <span class="bool-val">false</span>;
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">server</span> <span class="op">=</span> <span class="bool-val">false</span>;
         <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">peek</span>(<span class="ident">kw</span>::<span class="ident">client</span>) {
-            <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">kw</span>::<span class="ident">client</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
+            <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">kw</span>::<span class="ident">client</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
             <span class="ident">client</span> <span class="op">=</span> <span class="bool-val">true</span>;
         } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">peek</span>(<span class="ident">kw</span>::<span class="ident">server</span>) {
-            <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">kw</span>::<span class="ident">server</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
+            <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">kw</span>::<span class="ident">server</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
             <span class="ident">server</span> <span class="op">=</span> <span class="bool-val">true</span>;
         } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">peek</span>(<span class="ident">kw</span>::<span class="ident">mutual</span>) {
-            <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">kw</span>::<span class="ident">mutual</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
+            <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">kw</span>::<span class="ident">mutual</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
             <span class="ident">client</span> <span class="op">=</span> <span class="bool-val">true</span>;
             <span class="ident">server</span> <span class="op">=</span> <span class="bool-val">true</span>;
         } <span class="kw">else</span> {
@@ -445,7 +445,7 @@
         }
 
         <span class="kw">let</span> <span class="ident">ret</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">peek</span>(<span class="ident">kw</span>::<span class="ident">message</span>) {
-            <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">kw</span>::<span class="ident">message</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
+            <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">kw</span>::<span class="ident">message</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
             <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">syn</span>::<span class="ident">Ident</span><span class="op">&gt;</span>()<span class="question-mark">?</span>;
             <span class="kw">let</span> <span class="ident">fields</span> <span class="op">=</span> <span class="ident">parse_fields</span>(<span class="ident">input</span>)<span class="question-mark">?</span>;
             <span class="ident">Def</span>::<span class="ident">Message</span>(<span class="ident">MessageDef</span> {
@@ -456,10 +456,10 @@
                 <span class="ident">fields</span>,
             })
         } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">input</span>.<span class="ident">peek</span>(<span class="ident">kw</span>::<span class="ident">query</span>) {
-            <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">kw</span>::<span class="ident">query</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
+            <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">kw</span>::<span class="ident">query</span><span class="op">&gt;</span>().<span class="ident">unwrap</span>();
             <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">syn</span>::<span class="ident">Ident</span><span class="op">&gt;</span>()<span class="question-mark">?</span>;
             <span class="kw">let</span> <span class="ident">request</span> <span class="op">=</span> <span class="ident">parse_fields</span>(<span class="ident">input</span>)<span class="question-mark">?</span>;
-            <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">syn</span>::<span class="macro">Token</span><span class="macro">!</span>[<span class="op">-</span><span class="op">&gt;</span>]<span class="op">&gt;</span>()<span class="question-mark">?</span>;
+            <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">syn</span>::<span class="macro">Token</span><span class="macro">!</span>[<span class="op">-</span><span class="op">&gt;</span>]<span class="op">&gt;</span>()<span class="question-mark">?</span>;
             <span class="kw">let</span> <span class="ident">response</span> <span class="op">=</span> <span class="ident">parse_fields</span>(<span class="ident">input</span>)<span class="question-mark">?</span>;
             <span class="ident">Def</span>::<span class="ident">Query</span>(<span class="ident">QueryDef</span> {
                 <span class="ident">attrs</span>,
@@ -503,7 +503,7 @@
     <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">input</span>: <span class="ident">ParseStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">syn</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">call</span>(<span class="ident">syn</span>::<span class="ident">Attribute</span>::<span class="ident">parse_outer</span>)<span class="question-mark">?</span>;
         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>;
-        <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">syn</span>::<span class="macro">Token</span><span class="macro">!</span>[:]<span class="op">&gt;</span>()<span class="question-mark">?</span>;
+        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>::<span class="op">&lt;</span><span class="ident">syn</span>::<span class="macro">Token</span><span class="macro">!</span>[:]<span class="op">&gt;</span>()<span class="question-mark">?</span>;
         <span class="kw">let</span> <span class="ident">ty</span> <span class="op">=</span> <span class="ident">input</span>.<span class="ident">parse</span>()<span class="question-mark">?</span>;
         <span class="prelude-val">Ok</span>(<span class="self">Self</span> { <span class="ident">attrs</span>, <span class="ident">name</span>, <span class="ident">ty</span> })
     }

@@ -49,7 +49,7 @@
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">collections</span>::<span class="ident">BTreeMap</span>;
 
 <span class="kw">use</span> <span class="ident">eviov</span>::<span class="ident">math</span>::<span class="ident">Time</span>;
-<span class="kw">use</span> <span class="ident">eviov</span>::<span class="ident">SystemId</span>;
+<span class="kw">use</span> <span class="ident">eviov</span>::<span class="ident">ObjectId</span>;
 <span class="kw">use</span> <span class="ident">futures</span>::<span class="ident">channel</span>::<span class="ident">mpsc</span>::<span class="ident">UnboundedReceiver</span>;
 <span class="kw">use</span> <span class="ident">legion</span>::<span class="ident">world</span>::<span class="ident">World</span>;
 
@@ -69,7 +69,7 @@
         .<span class="ident">setup_system</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
             <span class="ident">world_ref</span>.<span class="ident">insert</span>(
                 (),
-                <span class="macro">vec</span><span class="macro">!</span>[(<span class="ident">SystemId</span>::<span class="ident">new</span>(
+                <span class="macro">vec</span><span class="macro">!</span>[(<span class="ident">ObjectId</span>::<span class="ident">new</span>(
                     <span class="ident">RuntimeId</span>::<span class="ident">from</span>(<span class="ident">runtime_ref</span>.<span class="ident">id</span>()).<span class="ident">into_u32</span>(),
                     <span class="ident">runtime_ref</span>.<span class="ident">next_id</span>(),
                 ),)],
