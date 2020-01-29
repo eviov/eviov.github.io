@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["FromClient",""],["FromServer",""]]});
+initSidebarItems({"enum":[["FromClient",""],["FromServer",""]],"struct":[["Proto",""]]});

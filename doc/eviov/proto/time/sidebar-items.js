@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["FromClient",""],["FromServer",""]],"struct":[["Ask","Queries the current game time"],["AskRequest",""],["AskResponse",""]]});
+initSidebarItems({"enum":[["FromClient",""],["FromServer",""]],"struct":[["Ask","Queries the current game time"],["AskRequest",""],["AskResponse",""],["Proto","Time synchronization."]]});

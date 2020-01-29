@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["ch",""],["cs",""],["intra",""],["sh",""],["time",""]],"trait":[["Message",""],["Query",""]]});
+initSidebarItems({"mod":[["ch",""],["cs",""],["intra",""],["sh",""],["time",""]],"struct":[["StdwebWs",""]],"trait":[["Handler",""],["Message",""],["Protocol",""],["Query",""],["WsClient",""]]});
