@@ -1,1 +1,1 @@
-initSidebarItems({});
+initSidebarItems({"enum":[["Message",""]],"fn":[["main",""]],"struct":[["Extra",""],["Plugin",""]]});

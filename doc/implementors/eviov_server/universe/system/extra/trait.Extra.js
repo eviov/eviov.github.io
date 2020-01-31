@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["eviov_games_ffa"] = [{"text":"impl <a class=\"trait\" href=\"eviov_server/universe/system/extra/trait.Extra.html\" title=\"trait eviov_server::universe::system::extra::Extra\">Extra</a> for <a class=\"struct\" href=\"eviov_games_ffa/struct.Extra.html\" title=\"struct eviov_games_ffa::Extra\">Extra</a>","synthetic":false,"types":["eviov_games_ffa::Extra"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
