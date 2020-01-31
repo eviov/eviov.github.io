@@ -140,7 +140,7 @@
 }
 
 <span class="doccomment">/// An enum covering all possible messages from a protocol endpoint.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Endpoint</span>: <span class="ident">Debug</span> <span class="op">+</span> <span class="ident">Serialize</span> <span class="op">+</span> <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Endpoint</span>: <span class="ident">Debug</span> <span class="op">+</span> <span class="ident">Serialize</span> <span class="op">+</span> <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span> {
     <span class="doccomment">/// The protocol that this endpoint belongs to.</span>
     <span class="kw">type</span> <span class="ident">Protocol</span>: <span class="ident">Protocol</span>;
     <span class="doccomment">/// The othe side of the protocol, i.e. Client =&gt; Server, Server =&gt; Client</span>
@@ -164,7 +164,7 @@
 }
 
 <span class="doccomment">/// Represents a message that can be sent through the protocol.</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Message</span>: <span class="ident">Debug</span> <span class="op">+</span> <span class="ident">Serialize</span> <span class="op">+</span> <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Message</span>: <span class="ident">Debug</span> <span class="op">+</span> <span class="ident">Serialize</span> <span class="op">+</span> <span class="kw">for</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="ident">Deserialize</span><span class="op">&lt;</span><span class="lifetime">&#39;de</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span> {
     <span class="doccomment">/// The protocol that this message is sent through.</span>
     <span class="kw">type</span> <span class="ident">Protocol</span>: <span class="ident">Protocol</span>;
 }
@@ -224,11 +224,11 @@
     <span class="kw">fn</span> <span class="ident">set_query_id</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">id</span>: <span class="ident">QueryId</span>);
 }
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">time</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">ch</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">cs</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">intra</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">ch</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">sh</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">time</span>;
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">transport</span>;
 </pre></div>

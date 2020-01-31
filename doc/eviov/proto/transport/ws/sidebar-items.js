@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["QueryError",""]],"struct":[["StdwebWs",""]],"trait":[["Handler",""],["WsClient",""]]});
+initSidebarItems({"enum":[["QueryError",""]],"struct":[["StdwebWs",""],["TungClient",""]],"trait":[["Handler",""],["WsClient",""]]});
