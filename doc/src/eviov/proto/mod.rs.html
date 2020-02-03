@@ -114,6 +114,53 @@
 <span id="114">114</span>
 <span id="115">115</span>
 <span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! Internal connection protocols.</span>
 <span class="doccomment">//!</span>
@@ -127,14 +174,17 @@
 
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span>;
 
+<span class="kw">use</span> <span class="ident">async_trait</span>::<span class="ident">async_trait</span>;
+<span class="kw">use</span> <span class="ident">type_equals</span>::<span class="ident">TypeEquals</span>;
+
 <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
 
 <span class="doccomment">/// A type representing a connection protocol.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This trait is implemented by unit structs, which exist only for type inference.</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Protocol</span>: <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span> {
-    <span class="kw">type</span> <span class="ident">FromClient</span>: <span class="ident">Endpoint</span>;
-    <span class="kw">type</span> <span class="ident">FromServer</span>: <span class="ident">Endpoint</span>;
+    <span class="kw">type</span> <span class="ident">Client</span>: <span class="ident">Endpoint</span>;
+    <span class="kw">type</span> <span class="ident">Server</span>: <span class="ident">Endpoint</span>;
 
     <span class="kw">fn</span> <span class="ident">name</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="lifetime">&#39;static</span> <span class="ident">str</span>;
 }
@@ -144,13 +194,55 @@
     <span class="doccomment">/// The protocol that this endpoint belongs to.</span>
     <span class="kw">type</span> <span class="ident">Protocol</span>: <span class="ident">Protocol</span>;
     <span class="doccomment">/// The othe side of the protocol, i.e. Client =&gt; Server, Server =&gt; Client</span>
-    <span class="kw">type</span> <span class="ident">Peer</span>: <span class="ident">Endpoint</span><span class="op">&lt;</span><span class="ident">Protocol</span> <span class="op">=</span> <span class="self">Self</span>::<span class="ident">Protocol</span><span class="op">&gt;</span>;
+    <span class="kw">type</span> <span class="ident">Peer</span>: <span class="ident">Endpoint</span><span class="op">&lt;</span><span class="ident">Protocol</span> <span class="op">=</span> <span class="self">Self</span>::<span class="ident">Protocol</span>, <span class="ident">Peer</span> <span class="op">=</span> <span class="self">Self</span><span class="op">&gt;</span>;
+
+    <span class="doccomment">/// Retrieves the request query ID of the enum value.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If the enum value represents a query request, this returns the query ID of the request.</span>
+    <span class="doccomment">/// Otherwise, this returns `None`.</span>
+    <span class="kw">fn</span> <span class="ident">request_query_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">QueryId</span><span class="op">&gt;</span>;
 
     <span class="doccomment">/// Retrieves the response query ID of the enum value.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// If the enum value represents a query response, this returns the query ID of the response.</span>
     <span class="doccomment">/// Otherwise, this returns `None`.</span>
     <span class="kw">fn</span> <span class="ident">response_query_id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">QueryId</span><span class="op">&gt;</span>;
+}
+
+<span class="doccomment">/// A generic handler trait for protocols.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Implementations of protocol endpoints should implement the MessageHandler trait generated by</span>
+<span class="doccomment">/// the `codegen` crate instead.</span>
+<span class="attribute">#[<span class="ident">async_trait</span>]</span>
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Handler</span>: <span class="ident">Sized</span> <span class="op">+</span> <span class="ident">Send</span> <span class="op">+</span> <span class="ident">Sync</span> <span class="op">+</span> <span class="lifetime">&#39;static</span> {
+    <span class="kw">type</span> <span class="ident">Endpoint</span>: <span class="ident">Endpoint</span>;
+
+    <span class="doccomment">/// Handles the message.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This future is dispatched on the executor directly, and does not block any other</span>
+    <span class="doccomment">/// operations.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// If the return value is `Some`, and the connection is still open when this method returns,</span>
+    <span class="doccomment">/// the returned message is sent.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The message can be a single message or a request message.</span>
+    <span class="doccomment">/// It is guaranteed to never be a response message, when called from `transport::router`.</span>
+    <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">handle_message</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">e</span>: <span class="op">&lt;</span><span class="self">Self</span>::<span class="ident">Endpoint</span> <span class="kw">as</span> <span class="ident">Endpoint</span><span class="op">&gt;</span>::<span class="ident">Peer</span>)
+        <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span>::<span class="ident">Endpoint</span><span class="op">&gt;</span>;
+}
+
+<span class="doccomment">/// A marker trait indicating that the endpoint is the client side of the protocol</span>
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ClientEndpoint</span> {}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Endpoint</span><span class="op">&gt;</span> <span class="ident">ClientEndpoint</span> <span class="kw">for</span> <span class="ident">T</span> <span class="kw">where</span>
+    <span class="op">&lt;</span><span class="op">&lt;</span><span class="ident">T</span> <span class="kw">as</span> <span class="ident">Endpoint</span><span class="op">&gt;</span>::<span class="ident">Protocol</span> <span class="kw">as</span> <span class="ident">Protocol</span><span class="op">&gt;</span>::<span class="ident">Client</span>: <span class="ident">TypeEquals</span><span class="op">&lt;</span><span class="ident">Other</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>
+{
+}
+
+<span class="doccomment">/// A marker trait indicating that the endpoint is the server side of the protocol</span>
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ServerEndpoint</span> {}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Endpoint</span><span class="op">&gt;</span> <span class="ident">ServerEndpoint</span> <span class="kw">for</span> <span class="ident">T</span> <span class="kw">where</span>
+    <span class="op">&lt;</span><span class="op">&lt;</span><span class="ident">T</span> <span class="kw">as</span> <span class="ident">Endpoint</span><span class="op">&gt;</span>::<span class="ident">Protocol</span> <span class="kw">as</span> <span class="ident">Protocol</span><span class="op">&gt;</span>::<span class="ident">Server</span>: <span class="ident">TypeEquals</span><span class="op">&lt;</span><span class="ident">Other</span> <span class="op">=</span> <span class="ident">T</span><span class="op">&gt;</span>
+{
 }
 
 <span class="doccomment">/// Wraps the ID of a query.</span>
@@ -225,7 +317,9 @@
 }
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">ch</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">cs</span>;
+<span class="kw">mod</span> <span class="ident">cs</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">cs</span>::<span class="ident">ctrl</span> <span class="kw">as</span> <span class="ident">cs_ctrl</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">cs</span>::<span class="ident">obs</span> <span class="kw">as</span> <span class="ident">cs_obs</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">intra</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">sh</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">time</span>;

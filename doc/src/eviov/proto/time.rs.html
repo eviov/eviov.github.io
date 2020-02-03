@@ -12,6 +12,7 @@
 <span id="12">12</span>
 <span id="13">13</span>
 <span id="14">14</span>
+<span id="15">15</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">math</span>::<span class="ident">Time</span>;
 
@@ -19,10 +20,11 @@
     <span class="doccomment">/// Time synchronization.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Time synchronization is used to synchronize the &quot;game time&quot; between processes.</span>
-    <span class="string">&quot;eviov-time&quot;</span>;
+
+    <span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;eviov-time&quot;</span>;
 
     <span class="doccomment">/// Queries the current game time</span>
-    <span class="ident">client</span> <span class="ident">query</span> <span class="ident">Ask</span> {} <span class="op">-</span><span class="op">&gt;</span> {
+    <span class="ident">client</span> <span class="ident">query</span> <span class="ident">When</span> {} <span class="op">-</span><span class="op">&gt;</span> {
         <span class="doccomment">/// The current gsme time when the server received the query</span>
         <span class="ident">time</span>: <span class="ident">Time</span>,
     }

@@ -1,1 +1,1 @@
-initSidebarItems({"constant":[["MAX_QUERY_POOL_SIZE",""]]});
+initSidebarItems({"constant":[["MAX_QUERY_POOL_SIZE",""],["OPEN_CONN_TIMEOUT",""]]});

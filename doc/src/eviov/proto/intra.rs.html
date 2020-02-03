@@ -52,14 +52,18 @@
 <span id="52">52</span>
 <span id="53">53</span>
 <span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">math</span>::{<span class="ident">Eci</span>, <span class="ident">Time</span>};
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">ObjectId</span>;
 
-<span class="comment">// Server = parent large body, Client = child large body</span>
-
 <span class="ident">codegen</span>::<span class="macro">proto</span><span class="macro">!</span> {
-    <span class="string">&quot;eviov-intra&quot;</span>;
+    <span class="doccomment">/// Communication between systems.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// In this protocol, the server is the parent system, and the client is the child system.</span>
+
+    <span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;eviov-intra&quot;</span>;
 
     <span class="doccomment">/// Binds the connection to a child.</span>
     <span class="ident">client</span> <span class="ident">message</span> <span class="ident">Handshake</span> {

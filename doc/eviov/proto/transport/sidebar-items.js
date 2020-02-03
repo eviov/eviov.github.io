@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["local",""],["ws",""]],"struct":[["Conn",""]],"trait":[["Agent",""]]});
+initSidebarItems({"enum":[["ChallengeResult",""],["InternalOpenError",""],["OpenError",""]],"struct":[["Handle",""],["Router",""],["TungClient",""]],"trait":[["Receiver",""],["WsClient",""]]});

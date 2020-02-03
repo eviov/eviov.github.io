@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["ClockMaintain",""],["LoopAction",""]],"mod":[["hardcode",""],["math",""],["proto","Internal connection protocols."]],"struct":[["AlwaysZeroTimeSource",""],["Clock",""],["ClockInner",""],["ObjectId",""]],"trait":[["Lock",""],["TimeSource",""]]});
+initSidebarItems({"enum":[["ClockMaintain",""],["LoopAction",""]],"mod":[["hardcode",""],["math",""],["proto","Internal connection protocols."]],"struct":[["AlwaysZeroTimeSource",""],["Clock",""],["ClockInner",""],["Context",""],["ObjectId",""]],"trait":[["ContextImpl",""],["Lock",""],["TimeSource",""]]});
