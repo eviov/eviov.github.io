@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["ChallengeResult",""],["InternalOpenError",""],["OpenError",""]],"mod":[["router",""],["stdweb",""],["tung",""]],"struct":[["Handle",""],["Router",""],["StdwebWs",""],["TungClient",""]],"trait":[["Receiver",""],["WsClient",""]]});

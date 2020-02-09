@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../eviov/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1"> 1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `common/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../eviov/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1"> 1</span>
 <span id="2"> 2</span>
 <span id="3"> 3</span>
 <span id="4"> 4</span>
@@ -38,7 +38,6 @@
 <span id="38">38</span>
 <span id="39">39</span>
 <span id="40">40</span>
-<span id="41">41</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">type_alias_impl_trait</span>, <span class="ident">option_expect_none</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>, <span class="ident">unused_variables</span>, <span class="ident">unreachable_code</span>)]</span>
@@ -49,7 +48,7 @@
     <span class="ident">clippy</span>::<span class="ident">checked_conversions</span>,
     <span class="ident">clippy</span>::<span class="ident">needless_borrow</span>,
     <span class="ident">clippy</span>::<span class="ident">shadow_unrelated</span>,
-    <span class="ident">clippy</span>::<span class="ident">wrong_pub_self_convention</span>,
+    <span class="ident">clippy</span>::<span class="ident">wrong_pub_self_convention</span>
 )]</span>
 <span class="attribute">#![<span class="ident">deny</span>(
     <span class="ident">anonymous_parameters</span>,
@@ -60,21 +59,20 @@
     <span class="ident">clippy</span>::<span class="ident">if_not_else</span>,
     <span class="ident">clippy</span>::<span class="ident">indexing_slicing</span>,
     <span class="ident">clippy</span>::<span class="ident">option_unwrap_used</span>,
-    <span class="ident">clippy</span>::<span class="ident">result_unwrap_used</span>,
+    <span class="ident">clippy</span>::<span class="ident">result_unwrap_used</span>
 )]</span>
-<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">debug_assertions</span>), <span class="ident">deny</span>(
-    <span class="ident">warnings</span>,
-    <span class="ident">clippy</span>::<span class="ident">dbg_macro</span>,
-))]</span>
+<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">debug_assertions</span>), <span class="ident">deny</span>(<span class="ident">warnings</span>, <span class="ident">clippy</span>::<span class="ident">dbg_macro</span>,))]</span>
 
-<span class="kw">mod</span> <span class="ident">id</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">id</span>::<span class="kw-2">*</span>;
-<span class="kw">mod</span> <span class="ident">context</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">context</span>::<span class="kw-2">*</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">eviov_context</span>::<span class="kw-2">*</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">eviov_types</span>::<span class="kw-2">*</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">proto</span> {
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">eviov_proto</span>::<span class="kw-2">*</span>;
+}
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">transport</span> {
+    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">eviov_transport</span>::<span class="kw-2">*</span>;
+}
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">hardcode</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">math</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">proto</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">orbit</span>;
 
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">LoopAction</span> {

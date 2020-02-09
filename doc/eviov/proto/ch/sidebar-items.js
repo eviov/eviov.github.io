@@ -1,1 +1,1 @@
-initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Client",""],["_IMPL_DESERIALIZE_FOR_Server",""],["_IMPL_SERIALIZE_FOR_Client",""],["_IMPL_SERIALIZE_FOR_Server",""]],"enum":[["Client",""],["Server",""]],"struct":[["ClientHandlerWrapper",""],["Proto",""],["ServerHandlerWrapper",""]],"trait":[["ClientHandler",""],["ServerHandler",""]]});
+initSidebarItems({"enum":[["Client",""],["Server",""]],"struct":[["ClientHandlerWrapper",""],["Proto",""],["ServerHandlerWrapper",""]],"trait":[["ClientHandler",""],["ServerHandler",""]]});
