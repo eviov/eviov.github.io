@@ -1,3 +1,0 @@
-(function() {var implementors = {};
-implementors["eviov_server"] = [{"text":"impl&lt;X:&nbsp;<a class=\"trait\" href=\"eviov_server/plugin/trait.Plugin.html\" title=\"trait eviov_server::plugin::Plugin\">Plugin</a>&gt; <a class=\"trait\" href=\"actix/actor/trait.Actor.html\" title=\"trait actix::actor::Actor\">Actor</a> for <a class=\"struct\" href=\"eviov_server/ws/struct.Session.html\" title=\"struct eviov_server::ws::Session\">Session</a>&lt;X&gt;","synthetic":false,"types":["eviov_server::ws::Session"]}];
-if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

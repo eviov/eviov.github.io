@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Condition","Condition allows to notify multiple receivers at the same time"],["Waiter",""]]});

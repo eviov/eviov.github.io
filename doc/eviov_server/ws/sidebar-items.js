@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["entry",""],["start",""]],"mod":[["config",""]],"struct":[["Session",""],["SessionIdCount",""]]});
+initSidebarItems({"fn":[["entry",""],["start",""]],"mod":[["config",""]]});
