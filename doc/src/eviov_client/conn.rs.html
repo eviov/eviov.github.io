@@ -189,7 +189,7 @@
                 <span class="ident">log</span>::<span class="macro">warn</span><span class="macro">!</span>(<span class="string">&quot;Socket close dispatched again&quot;</span>);
                 <span class="kw">return</span>;
             }
-            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">ws</span>().<span class="ident">unwrap</span>(),
+            <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="self">self</span>.<span class="ident">ws</span>().<span class="ident">expect</span>(<span class="string">&quot;ws is present in all non-closed states&quot;</span>),
         };
         <span class="ident">ws</span>.<span class="ident">close</span>();
         <span class="kw-2">*</span><span class="self">self</span> <span class="op">=</span> <span class="self">Self</span>::<span class="ident">Closed</span>;
@@ -207,7 +207,7 @@
         <span class="kw">use</span> <span class="ident">event</span>::<span class="ident">IMessageEvent</span>;
         <span class="kw">match</span> <span class="ident">event</span>.<span class="ident">data</span>() {
             <span class="ident">event</span>::<span class="ident">SocketMessageData</span>::<span class="ident">ArrayBuffer</span>(<span class="ident">_buf</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="macro">unimplemented</span><span class="macro">!</span>(),
-            <span class="ident">data</span> @ <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> {
+            <span class="ident">data</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="ident">log</span>::<span class="macro">warn</span><span class="macro">!</span>(<span class="string">&quot;Expected ArrayBuffer from ws, got {:?}&quot;</span>, <span class="ident">data</span>);
             }
         }

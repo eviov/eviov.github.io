@@ -17,11 +17,55 @@
 <span id="17">17</span>
 <span id="18">18</span>
 <span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">type_alias_impl_trait</span>, <span class="ident">option_expect_none</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>, <span class="ident">unused_variables</span>, <span class="ident">unreachable_code</span>)]</span>
-<span class="attribute">#![<span class="ident">warn</span>(<span class="ident">unused_results</span>, <span class="ident">unused_qualifications</span>, <span class="ident">variant_size_differences</span>)]</span>
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">anonymous_parameters</span>, <span class="ident">bare_trait_objects</span>)]</span>
+<span class="attribute">#![<span class="ident">warn</span>(
+    <span class="ident">unused_results</span>,
+    <span class="ident">unused_qualifications</span>,
+    <span class="ident">variant_size_differences</span>,
+    <span class="ident">clippy</span>::<span class="ident">checked_conversions</span>,
+    <span class="ident">clippy</span>::<span class="ident">needless_borrow</span>,
+    <span class="ident">clippy</span>::<span class="ident">shadow_unrelated</span>,
+    <span class="ident">clippy</span>::<span class="ident">wrong_pub_self_convention</span>,
+)]</span>
+<span class="attribute">#![<span class="ident">deny</span>(
+    <span class="ident">anonymous_parameters</span>,
+    <span class="ident">bare_trait_objects</span>,
+    <span class="ident">clippy</span>::<span class="ident">as_conversions</span>,
+    <span class="ident">clippy</span>::<span class="ident">clone_on_ref_ptr</span>,
+    <span class="ident">clippy</span>::<span class="ident">float_cmp_const</span>,
+    <span class="ident">clippy</span>::<span class="ident">if_not_else</span>,
+    <span class="ident">clippy</span>::<span class="ident">indexing_slicing</span>,
+    <span class="ident">clippy</span>::<span class="ident">option_unwrap_used</span>,
+    <span class="ident">clippy</span>::<span class="ident">result_unwrap_used</span>,
+)]</span>
+<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">debug_assertions</span>), <span class="ident">deny</span>(
+    <span class="ident">warnings</span>,
+    <span class="ident">clippy</span>::<span class="ident">dbg_macro</span>,
+))]</span>
 
 <span class="kw">mod</span> <span class="ident">id</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">id</span>::<span class="kw-2">*</span>;

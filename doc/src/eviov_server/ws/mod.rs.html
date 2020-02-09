@@ -99,14 +99,6 @@
 <span id="99"> 99</span>
 <span id="100">100</span>
 <span id="101">101</span>
-<span id="102">102</span>
-<span id="103">103</span>
-<span id="104">104</span>
-<span id="105">105</span>
-<span id="106">106</span>
-<span id="107">107</span>
-<span id="108">108</span>
-<span id="109">109</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">sync</span>::<span class="ident">atomic</span>::{<span class="ident">AtomicU32</span>, <span class="ident">Ordering</span>};
@@ -200,14 +192,6 @@
                 );
             }
             <span class="prelude-val">Ok</span>(<span class="ident">ws</span>::<span class="ident">Message</span>::<span class="ident">Binary</span>(<span class="ident">data</span>)) <span class="op">=</span><span class="op">&gt;</span> {
-                <span class="kw">let</span> <span class="ident">_data</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">rmp_serde</span>::<span class="ident">from_read_ref</span>(<span class="kw-2">&amp;</span><span class="ident">data</span>) {
-                    <span class="prelude-val">Ok</span>(<span class="ident">data</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">data</span>,
-                    <span class="prelude-val">Err</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> {
-                        <span class="ident">log</span>::<span class="macro">info</span><span class="macro">!</span>(<span class="string">&quot;Session {}: Received malformed data&quot;</span>, <span class="self">self</span>.<span class="ident">session_id</span>);
-                        <span class="ident">ctx</span>.<span class="ident">stop</span>();
-                        <span class="kw">return</span>;
-                    }
-                };
                 <span class="comment">// TODO delegate data</span>
             }
             <span class="prelude-val">Ok</span>(<span class="ident">ws</span>::<span class="ident">Message</span>::<span class="ident">Close</span>(<span class="kw">_</span>)) <span class="op">=</span><span class="op">&gt;</span> {
