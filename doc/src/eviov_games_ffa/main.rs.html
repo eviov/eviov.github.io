@@ -44,9 +44,11 @@
 <span id="44">44</span>
 <span id="45">45</span>
 <span id="46">46</span>
+<span id="47">47</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>, <span class="ident">unused_variables</span>)]</span>
-<span class="attribute">#![<span class="ident">warn</span>(<span class="ident">unused_results</span>)]</span>
+<span class="attribute">#![<span class="ident">warn</span>(<span class="ident">unused_results</span>, <span class="ident">unused_qualifications</span>, <span class="ident">variant_size_differences</span>)]</span>
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">anonymous_parameters</span>, <span class="ident">bare_trait_objects</span>)]</span>
 
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>;
 

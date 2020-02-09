@@ -16,10 +16,12 @@
 <span id="16">16</span>
 <span id="17">17</span>
 <span id="18">18</span>
+<span id="19">19</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">type_alias_impl_trait</span>, <span class="ident">option_expect_none</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>, <span class="ident">unused_variables</span>, <span class="ident">unreachable_code</span>)]</span>
-<span class="attribute">#![<span class="ident">warn</span>(<span class="ident">unused_results</span>)]</span>
+<span class="attribute">#![<span class="ident">warn</span>(<span class="ident">unused_results</span>, <span class="ident">unused_qualifications</span>, <span class="ident">variant_size_differences</span>)]</span>
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">anonymous_parameters</span>, <span class="ident">bare_trait_objects</span>)]</span>
 
 <span class="kw">mod</span> <span class="ident">id</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">id</span>::<span class="kw-2">*</span>;
