@@ -194,6 +194,7 @@ ALIASES["url"] = {};
 ALIASES["utf8"] = {};
 ALIASES["wasm_bindgen"] = {};
 ALIASES["wasm_bindgen_backend"] = {};
+ALIASES["wasm_bindgen_futures"] = {};
 ALIASES["wasm_bindgen_macro"] = {};
 ALIASES["wasm_bindgen_macro_support"] = {};
 ALIASES["wasm_bindgen_shared"] = {};

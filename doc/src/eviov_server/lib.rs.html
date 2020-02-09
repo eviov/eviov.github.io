@@ -28,35 +28,13 @@
 <span id="28">28</span>
 <span id="29">29</span>
 <span id="30">30</span>
-<span id="31">31</span>
-<span id="32">32</span>
-<span id="33">33</span>
-<span id="34">34</span>
-<span id="35">35</span>
-<span id="36">36</span>
-<span id="37">37</span>
-<span id="38">38</span>
-<span id="39">39</span>
-<span id="40">40</span>
-<span id="41">41</span>
-<span id="42">42</span>
-<span id="43">43</span>
-<span id="44">44</span>
-<span id="45">45</span>
-<span id="46">46</span>
-<span id="47">47</span>
-<span id="48">48</span>
-<span id="49">49</span>
 </pre><div class="example-wrap"><pre class="rust ">
-<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>, <span class="ident">unused_variables</span>)]</span>
+<span class="attribute">#![<span class="ident">feature</span>(<span class="ident">never_type</span>)]</span>
+<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>, <span class="ident">unused_variables</span>, <span class="ident">unreachable_code</span>)]</span>
 <span class="attribute">#![<span class="ident">warn</span>(<span class="ident">unused_results</span>)]</span>
 
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">sync</span>::<span class="ident">Arc</span>;
-<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">thread</span>;
-
-<span class="kw">mod</span> <span class="ident">clock</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">clock</span>::<span class="kw-2">*</span>;
 
 <span class="kw">mod</span> <span class="ident">plugin</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">plugin</span>::<span class="kw-2">*</span>;
@@ -65,31 +43,15 @@
 
 <span class="kw">mod</span> <span class="ident">ws</span>;
 
+<span class="kw">fn</span> <span class="ident">create_clock</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="op">!</span> {
+    <span class="macro">unimplemented</span><span class="macro">!</span>()
+}
+
 <span class="attribute">#[<span class="ident">actix_rt</span>::<span class="ident">main</span>]</span>
 <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">start</span><span class="op">&lt;</span><span class="ident">X</span>: <span class="ident">Plugin</span><span class="op">&gt;</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">io</span>::<span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
     <span class="ident">pretty_env_logger</span>::<span class="ident">init</span>();
 
-    <span class="kw">let</span> (<span class="ident">clock</span>, <span class="ident">src</span>) <span class="op">=</span> <span class="ident">create_clock</span>().<span class="kw">await</span>;
-    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">src</span>) <span class="op">=</span> <span class="ident">src</span> {
-        <span class="kw">let</span> <span class="ident">clock</span> <span class="op">=</span> <span class="ident">clock</span>.<span class="ident">clone</span>();
-        <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">thread</span>::<span class="ident">spawn</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
-            <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">time</span>::<span class="ident">Duration</span>;
-
-            <span class="kw">use</span> <span class="ident">eviov</span>::<span class="ident">LoopAction</span>;
-            <span class="kw">use</span> <span class="ident">tokio</span>::<span class="ident">time</span>::<span class="ident">delay_for</span>;
-
-            <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">delay_fn</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">LoopAction</span> {
-                <span class="ident">delay_for</span>(<span class="ident">Duration</span>::<span class="ident">from_secs</span>(<span class="number">60</span>)).<span class="kw">await</span>;
-                <span class="ident">LoopAction</span>::<span class="ident">Continue</span>
-            }
-
-            <span class="kw">loop</span> {
-                <span class="kw">let</span> <span class="ident">_cm</span> <span class="op">=</span> <span class="ident">futures</span>::<span class="ident">executor</span>::<span class="ident">block_on</span>(<span class="ident">clock</span>.<span class="ident">maintain</span>(<span class="ident">src</span>, <span class="ident">delay_fn</span>));
-                <span class="macro">unimplemented</span><span class="macro">!</span>(<span class="string">&quot;Handle _cm&quot;</span>)
-            }
-        });
-    }
-    <span class="kw">let</span> <span class="ident">runtime</span> <span class="op">=</span> <span class="ident">universe</span>::<span class="ident">Runtime</span>::<span class="op">&lt;</span><span class="ident">X</span>::<span class="ident">SystemExtra</span><span class="op">&gt;</span>::<span class="ident">new</span>(<span class="ident">clock</span>);
+    <span class="kw">let</span> <span class="ident">runtime</span> <span class="op">=</span> <span class="ident">universe</span>::<span class="ident">Runtime</span>::<span class="op">&lt;</span><span class="ident">X</span>::<span class="ident">SystemExtra</span><span class="op">&gt;</span>::<span class="ident">new</span>(<span class="ident">create_clock</span>());
     <span class="kw">let</span> <span class="ident">plugin</span> <span class="op">=</span> <span class="ident">X</span>::<span class="ident">init</span>(<span class="ident">universe</span>::<span class="ident">Runtime</span>::<span class="ident">clone</span>(<span class="kw-2">&amp;</span><span class="ident">runtime</span>));
 
     <span class="kw">let</span> <span class="ident">plugin</span> <span class="op">=</span> <span class="ident">Arc</span>::<span class="ident">new</span>(<span class="ident">plugin</span>);
