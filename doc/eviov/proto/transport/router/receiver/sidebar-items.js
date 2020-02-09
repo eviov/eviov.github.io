@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["AllReceivers",""],["Receivers",""]],"trait":[["Receiver",""]]});

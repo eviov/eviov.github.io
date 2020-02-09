@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["create_clock",""],["start",""]],"mod":[["universe",""]],"struct":[["UrlTimeSource",""]],"trait":[["Plugin",""]],"type":[["Clock",""]]});
+initSidebarItems({"fn":[["create_clock",""],["start",""]],"mod":[["clock",""],["plugin",""],["universe",""],["ws",""]],"struct":[["UrlTimeSource",""]],"trait":[["Plugin",""]],"type":[["Clock",""]]});

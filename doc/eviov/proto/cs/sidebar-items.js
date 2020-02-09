@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["ctrl","The control channel"],["obs","The observer channel"]]});

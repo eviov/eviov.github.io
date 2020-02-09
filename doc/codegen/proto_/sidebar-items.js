@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Def",""]],"fn":[["main",""]],"mod":[["kw",""]],"struct":[["Field",""],["Input",""],["MessageDef",""],["QueryDef",""]]});

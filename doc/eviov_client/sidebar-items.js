@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["__wasm_bindgen_generated_entry",""],["create_clock",""],["entry",""]],"struct":[["UrlTimeSource",""]],"type":[["Clock",""]]});
+initSidebarItems({"fn":[["__wasm_bindgen_generated_entry",""],["create_clock",""],["entry",""]],"mod":[["clock",""],["conn",""],["pool",""]],"static":[["ALLOC",""]],"struct":[["UrlTimeSource",""]],"type":[["Clock",""]]});

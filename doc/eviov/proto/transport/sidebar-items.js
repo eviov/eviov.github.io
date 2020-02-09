@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["ChallengeResult",""],["InternalOpenError",""],["OpenError",""]],"struct":[["Handle",""],["Router",""],["TungClient",""]],"trait":[["Receiver",""],["WsClient",""]]});
+initSidebarItems({"enum":[["ChallengeResult",""],["InternalOpenError",""],["OpenError",""]],"mod":[["router",""],["tung",""]],"struct":[["Handle",""],["Router",""],["TungClient",""]],"trait":[["Receiver",""],["WsClient",""]]});
