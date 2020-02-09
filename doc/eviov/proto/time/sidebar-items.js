@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["Client",""],["Server",""]],"struct":[["ClientHandlerWrapper",""],["Proto","Time synchronization."],["ServerHandlerWrapper",""],["WhenRequest","Queries the current game time"],["WhenResponse",""]],"trait":[["ClientHandler",""],["ServerHandler",""]]});

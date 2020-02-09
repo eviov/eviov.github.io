@@ -65,9 +65,14 @@
 <span id="65">65</span>
 <span id="66">66</span>
 <span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">eviov_types</span>::{<span class="ident">Eci</span>, <span class="ident">Mass</span>, <span class="ident">Time</span>, <span class="ident">Vector</span>};
 
+<span class="doccomment">/// Denotes an orbit, sensitive to initial time (the true anomaly).</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Orbit</span> {
     <span class="doccomment">/// Gravitational constant times mass</span>
@@ -83,6 +88,7 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Orbit</span> {
+    <span class="doccomment">/// Evaluates the orbit from the momentary ECI and mass of the parent.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_mass_eci</span>(<span class="ident">mass</span>: <span class="ident">Mass</span>, <span class="ident">eci</span>: <span class="ident">Eci</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="comment">// Reference: https://space.stackexchange.com/a/2590/29538</span>
         <span class="comment">// TODO: perform analysis on numerical issues</span>
@@ -119,6 +125,7 @@
         }
     }
 
+    <span class="doccomment">/// Returns the state of the orbit at the specified instant.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">instant</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">t</span>: <span class="ident">Time</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">OrbitInstant</span><span class="op">&lt;</span><span class="lifetime">&#39;_</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">Time</span>(<span class="ident">t</span>) <span class="op">=</span> <span class="ident">t</span>;
 
@@ -129,6 +136,7 @@
     }
 }
 
+<span class="doccomment">/// The information calculated about the orbit at the specified instant.</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">OrbitInstant</span><span class="op">&lt;</span><span class="lifetime">&#39;t</span><span class="op">&gt;</span> {
     <span class="ident">orbit</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;t</span> <span class="ident">Orbit</span>,
     <span class="ident">m</span>: <span class="ident">f64</span>,

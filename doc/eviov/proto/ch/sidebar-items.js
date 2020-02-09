@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["Client",""],["Server",""]],"struct":[["ClientHandlerWrapper",""],["Proto",""],["ServerHandlerWrapper",""]],"trait":[["ClientHandler",""],["ServerHandler",""]]});

@@ -1,1 +1,1 @@
-initSidebarItems({"macro":[["proto",""]],"mod":[["proto_",""]]});
+initSidebarItems({"macro":[["proto","Generates a protocol definition."]],"mod":[["proto_",""]]});

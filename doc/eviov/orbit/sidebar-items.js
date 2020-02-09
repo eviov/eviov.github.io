@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["Orbit",""],["OrbitInstant",""]]});
+initSidebarItems({"struct":[["Orbit","Denotes an orbit, sensitive to initial time (the true anomaly)."],["OrbitInstant","The information calculated about the orbit at the specified instant."]]});

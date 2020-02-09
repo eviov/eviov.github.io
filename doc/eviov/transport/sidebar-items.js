@@ -1,1 +1,0 @@
-initSidebarItems({"constant":[["MAX_QUERY_POOL_SIZE",""],["OPEN_CONN_TIMEOUT",""]],"enum":[["ChallengeResult",""],["InternalOpenError",""],["OpenError",""]],"struct":[["Handle",""],["Router",""],["StdwebWs",""]],"trait":[["Receiver",""],["WsClient",""]]});

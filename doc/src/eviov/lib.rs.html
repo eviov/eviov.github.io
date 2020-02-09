@@ -38,10 +38,20 @@
 <span id="38">38</span>
 <span id="39">39</span>
 <span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
 </pre><div class="example-wrap"><pre class="rust ">
+<span class="doccomment">//! The main common crate for the client and servers.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! This crate reexports items defined in other subcrates.</span>
+
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">type_alias_impl_trait</span>, <span class="ident">option_expect_none</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>, <span class="ident">unused_variables</span>, <span class="ident">unreachable_code</span>)]</span>
 <span class="attribute">#![<span class="ident">warn</span>(
+    <span class="ident">missing_docs</span>,
     <span class="ident">unused_results</span>,
     <span class="ident">unused_qualifications</span>,
     <span class="ident">variant_size_differences</span>,
@@ -64,19 +74,19 @@
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">debug_assertions</span>), <span class="ident">deny</span>(<span class="ident">warnings</span>, <span class="ident">clippy</span>::<span class="ident">dbg_macro</span>,))]</span>
 
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">eviov_context</span>::<span class="kw-2">*</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">eviov_proto</span> <span class="kw">as</span> <span class="ident">proto</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">eviov_transport</span> <span class="kw">as</span> <span class="ident">transport</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">eviov_types</span>::<span class="kw-2">*</span>;
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">proto</span> {
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">eviov_proto</span>::<span class="kw-2">*</span>;
-}
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">transport</span> {
-    <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">eviov_transport</span>::<span class="kw-2">*</span>;
-}
 
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">orbit</span>;
+<span class="kw">mod</span> <span class="ident">orbit</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">orbit</span>::<span class="kw-2">*</span>;
 
+<span class="doccomment">/// General-purpose enum to denote the termination action of a looping function.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">LoopAction</span> {
+    <span class="doccomment">/// Stop executing the loop</span>
     <span class="ident">Break</span>,
+    <span class="doccomment">/// Continue executing the loop</span>
     <span class="ident">Continue</span>,
 }
 </pre></div>

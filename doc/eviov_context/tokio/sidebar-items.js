@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["TokioContext",""]]});
+initSidebarItems({"struct":[["TokioContext","`ContextImpl` implementation for `TokioContext`."]]});

@@ -1,1 +1,1 @@
-initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_ScaleVector",""],["_IMPL_DESERIALIZE_FOR_Vector",""],["_IMPL_SERIALIZE_FOR_ScaleVector",""],["_IMPL_SERIALIZE_FOR_Vector",""]],"struct":[["ScaleVector",""],["Vector",""]]});
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_ScaleVector",""],["_IMPL_DESERIALIZE_FOR_Vector",""],["_IMPL_SERIALIZE_FOR_ScaleVector",""],["_IMPL_SERIALIZE_FOR_Vector",""]],"struct":[["ScaleVector","A special type of vector dedicated for scaling."],["Vector","A general-purpose 2D vector."]]});

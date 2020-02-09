@@ -12,6 +12,12 @@
 <span id="12">12</span>
 <span id="13">13</span>
 <span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">derive_more</span>::{<span class="ident">Add</span>, <span class="ident">Sub</span>};
 <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
@@ -20,10 +26,16 @@
 
 <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
 
+<span class="doccomment">/// Denotes the ECI position and velocity of an object.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// While `Eci` itself does not store data about its relative parent,</span>
+<span class="doccomment">/// code using `Eci` should document clearly what this `Eci` corresponds to.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">Add</span>, <span class="ident">Sub</span>, <span class="ident">CopyGetters</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Eci</span> {
+    <span class="doccomment">/// The position value</span>
     <span class="attribute">#[<span class="ident">get_copy</span> <span class="op">=</span> <span class="string">&quot;pub&quot;</span>]</span>
     <span class="ident">position</span>: <span class="ident">Vector</span><span class="op">&lt;</span><span class="ident">Length</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The velocity value</span>
     <span class="attribute">#[<span class="ident">get_copy</span> <span class="op">=</span> <span class="string">&quot;pub&quot;</span>]</span>
     <span class="ident">velocity</span>: <span class="ident">Vector</span><span class="op">&lt;</span><span class="ident">Length</span><span class="op">&gt;</span>,
 }

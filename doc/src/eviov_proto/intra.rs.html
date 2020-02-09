@@ -53,7 +53,13 @@
 <span id="53">53</span>
 <span id="54">54</span>
 <span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
 </pre><div class="example-wrap"><pre class="rust ">
+<span class="doccomment">//! Communication between systems.</span>
+
 <span class="kw">use</span> <span class="ident">eviov_types</span>::{<span class="ident">Eci</span>, <span class="ident">ObjectId</span>, <span class="ident">Time</span>};
 
 <span class="ident">codegen</span>::<span class="macro">proto</span><span class="macro">!</span> {
@@ -89,6 +95,7 @@
         <span class="ident">session</span>: <span class="ident">u64</span>,
     }
 
+    <span class="doccomment">/// Transfers a child to the peer system.</span>
     <span class="ident">mutual</span> <span class="ident">query</span> <span class="ident">TransferChild</span> {
         <span class="doccomment">/// A full copy of the object to transfer</span>
         <span class="ident">object</span>: <span class="ident">FullObject</span>,
@@ -105,6 +112,7 @@
     }
 }
 
+<span class="doccomment">/// The full information about an object</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">serde</span>::<span class="ident">Serialize</span>, <span class="ident">serde</span>::<span class="ident">Deserialize</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FullObject</span> {
     <span class="ident">id</span>: <span class="ident">ObjectId</span>,

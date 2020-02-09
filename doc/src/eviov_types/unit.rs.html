@@ -29,18 +29,34 @@
 <span id="29">29</span>
 <span id="30">30</span>
 <span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">derive_more</span>::{<span class="ident">Add</span>, <span class="ident">Sub</span>};
 <span class="kw">use</span> <span class="ident">num_derive</span>::{<span class="ident">Num</span>, <span class="ident">NumOps</span>, <span class="ident">One</span>, <span class="ident">Zero</span>};
 <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
 
+<span class="doccomment">/// The coordinated time in the game universe.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The coordinated time increments at a constant rate of one tick per `MILLIS_PER_TICK`</span>
+<span class="doccomment">/// milliseconds.</span>
+<span class="doccomment">/// Nodes should communicate via `proto::time` to synchronize the common game time in the universe.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">Add</span>, <span class="ident">Sub</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Time</span>(<span class="kw">pub</span> <span class="ident">i32</span>);
 
+<span class="doccomment">/// The number of milliseconds per tick.</span>
 <span class="kw">pub</span> <span class="kw">const</span> <span class="ident">MILLIS_PER_TICK</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">20</span>;
 
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">float_unit</span> {
-    ($(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>,)<span class="kw-2">*</span>) <span class="op">=</span><span class="op">&gt;</span> { $(
+    ($($(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">doc</span>:<span class="ident">meta</span>]</span>)<span class="op">*</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">name</span>:<span class="ident">ident</span>,)<span class="kw-2">*</span>) <span class="op">=</span><span class="op">&gt;</span> { $(
+        $(<span class="attribute">#[<span class="macro-nonterminal">$</span><span class="macro-nonterminal">doc</span>]</span>)<span class="op">*</span>
         <span class="attribute">#[<span class="ident">derive</span>(
             <span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>,
             <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>,
@@ -58,7 +74,9 @@
 }
 
 <span class="macro">float_unit</span><span class="macro">!</span> {
+    <span class="doccomment">/// Represents a length value.</span>
     <span class="ident">Length</span>,
+    <span class="doccomment">/// Represents a mass value.</span>
     <span class="ident">Mass</span>,
 }
 </pre></div>

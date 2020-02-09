@@ -68,12 +68,37 @@
 <span id="68">68</span>
 <span id="69">69</span>
 <span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
+<span id="76">76</span>
+<span id="77">77</span>
+<span id="78">78</span>
+<span id="79">79</span>
+<span id="80">80</span>
+<span id="81">81</span>
+<span id="82">82</span>
+<span id="83">83</span>
+<span id="84">84</span>
+<span id="85">85</span>
+<span id="86">86</span>
+<span id="87">87</span>
+<span id="88">88</span>
+<span id="89">89</span>
+<span id="90">90</span>
 </pre><div class="example-wrap"><pre class="rust ">
+<span class="doccomment">//! Client-system communications.</span>
+
 <span class="doccomment">/// The observer channel</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">obs</span> {
-    <span class="kw">use</span> <span class="ident">eviov_types</span>::<span class="ident">Time</span>;
+    <span class="kw">use</span> <span class="ident">eviov_types</span>::{<span class="ident">Eci</span>, <span class="ident">Length</span>, <span class="ident">ObjectId</span>, <span class="ident">Time</span>, <span class="ident">Vector</span>};
+    <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
 
     <span class="ident">codegen</span>::<span class="macro">proto</span><span class="macro">!</span> {
+        <span class="doccomment">/// Client-system observer channel</span>
+
         <span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;eviov-cs-observer&quot;</span>;
 
         <span class="doccomment">/// Identifies the client to acknowledge that it is authorized to observe</span>
@@ -105,9 +130,22 @@
         <span class="ident">server</span> <span class="ident">message</span> <span class="ident">Close</span> {}
     }
 
-    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">serde</span>::<span class="ident">Serialize</span>, <span class="ident">serde</span>::<span class="ident">Deserialize</span>)]</span>
+    <span class="doccomment">/// Contents of an event.</span>
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>)]</span>
     <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">EventContent</span> {
-        <span class="ident">Accel</span>(<span class="ident">eviov_types</span>::<span class="ident">ObjectId</span>), <span class="comment">// add info</span>
+        <span class="doccomment">/// The ECI and acceleration of an object has changed.</span>
+        <span class="ident">Accel</span>(<span class="ident">AccelEvent</span>), <span class="comment">// add info</span>
+    }
+
+    <span class="doccomment">/// Data for an acceleration event.</span>
+    <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>)]</span>
+    <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">AccelEvent</span> {
+        <span class="doccomment">/// The object described in this event.</span>
+        <span class="kw">pub</span> <span class="ident">object</span>: <span class="ident">ObjectId</span>,
+        <span class="doccomment">/// The new acceleration of the object.</span>
+        <span class="kw">pub</span> <span class="ident">accel</span>: <span class="ident">Vector</span><span class="op">&lt;</span><span class="ident">Length</span><span class="op">&gt;</span>,
+        <span class="doccomment">/// The ECI posvel of the object.</span>
+        <span class="kw">pub</span> <span class="ident">eci</span>: <span class="ident">Eci</span>,
     }
 }
 
@@ -116,6 +154,8 @@
     <span class="kw">use</span> <span class="ident">eviov_types</span>::<span class="ident">ObjectId</span>;
 
     <span class="ident">codegen</span>::<span class="macro">proto</span><span class="macro">!</span> {
+        <span class="doccomment">/// Client-system controller channel.</span>
+
         <span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;eviov-cs-control&quot;</span>;
 
         <span class="doccomment">/// Requests control on an object.</span>

@@ -190,6 +190,13 @@
 <span id="190">190</span>
 <span id="191">191</span>
 <span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">collections</span>::<span class="ident">HashMap</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">sync</span>::<span class="ident">atomic</span>::{<span class="ident">AtomicU32</span>, <span class="ident">Ordering</span>};
@@ -203,6 +210,7 @@
 
 <span class="kw">use</span> <span class="ident">eviov_proto</span>::{<span class="ident">Endpoint</span>, <span class="ident">Handler</span>, <span class="ident">MessageFrom</span>, <span class="ident">QueryId</span>, <span class="ident">QueryRequestFrom</span>, <span class="ident">Single</span>};
 
+<span class="doccomment">/// A channel sender/receiver abstraction for both local and websocket communication.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">SendMsg</span>: <span class="ident">Endpoint</span><span class="op">&gt;</span> {
     <span class="ident">send</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">Mutex</span><span class="op">&lt;</span><span class="ident">mpsc</span>::<span class="ident">UnboundedSender</span><span class="op">&lt;</span><span class="ident">SendMsg</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>,
@@ -214,6 +222,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">SendMsg</span>: <span class="ident">Endpoint</span><span class="op">&gt;</span> <span class="ident">Handle</span><span class="op">&lt;</span><span class="ident">SendMsg</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Opens a new commuincation handle.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>(
         <span class="ident">send</span>: <span class="ident">mpsc</span>::<span class="ident">UnboundedSender</span><span class="op">&lt;</span><span class="ident">SendMsg</span><span class="op">&gt;</span>,
         <span class="ident">recv</span>: <span class="ident">mpsc</span>::<span class="ident">UnboundedReceiver</span><span class="op">&lt;</span><span class="ident">SendMsg</span>::<span class="ident">Peer</span><span class="op">&gt;</span>,
@@ -228,6 +237,7 @@
         }
     }
 
+    <span class="doccomment">/// Sends a single message.</span>
     <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">send_single</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">message</span>: <span class="ident">M</span>)
     <span class="kw">where</span>
         <span class="ident">M</span>: <span class="ident">MessageFrom</span><span class="op">&lt;</span><span class="ident">SendMsg</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">Single</span>,
@@ -236,6 +246,7 @@
         <span class="kw">let</span> <span class="kw">_</span> <span class="op">=</span> <span class="ident">send</span>.<span class="ident">send</span>(<span class="ident">message</span>.<span class="ident">to_enum</span>()).<span class="kw">await</span>; <span class="comment">// send error is not significant</span>
     }
 
+    <span class="doccomment">/// Sends a query, returning its response.</span>
     <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">send_query</span><span class="op">&lt;</span><span class="ident">M</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="kw-2">mut</span> <span class="ident">query</span>: <span class="ident">M</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">M</span>::<span class="ident">Response</span>, <span class="ident">String</span><span class="op">&gt;</span>
     <span class="kw">where</span>
         <span class="ident">M</span>: <span class="ident">QueryRequestFrom</span><span class="op">&lt;</span><span class="ident">SendMsg</span><span class="op">&gt;</span>,
@@ -280,6 +291,7 @@
         }
     }
 
+    <span class="doccomment">/// Executes regulatory code until the specified instant.</span>
     <span class="kw">pub</span> <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">heartbeat</span><span class="op">&lt;</span><span class="ident">H</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
         <span class="ident">until</span>: <span class="ident">Instant</span>,
@@ -350,6 +362,7 @@
         <span class="comment">// this loop always breaks at the `timeout` function</span>
     }
 
+    <span class="doccomment">/// Schedules an error to be triggered at the next heartbeat.</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">schedule_error</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">err</span>: <span class="kw">impl</span> <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>) {
         {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">lock</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">error</span>.<span class="ident">lock</span>().<span class="kw">await</span>;
@@ -375,6 +388,7 @@
         }
     }
 
+    <span class="doccomment">/// Checks if an error is scheduled.</span>
     <span class="kw">async</span> <span class="kw">fn</span> <span class="ident">check_error</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">String</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">guard</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">error</span>.<span class="ident">lock</span>().<span class="kw">await</span>;
         <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">guard</span> {

@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["tokio",""],["wasm",""]],"struct":[["Context",""]],"trait":[["ContextImpl",""]]});
+initSidebarItems({"mod":[["tokio","Implementation for server crates compiling to native."],["wasm","Implementation for client crates compiling to WASM."]],"struct":[["Context","User wrapper for `ContextImpl`."]],"trait":[["ContextImpl","Context-dependent primitives."]]});

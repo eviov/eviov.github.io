@@ -1,1 +1,1 @@
-initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Eci",""],["_IMPL_SERIALIZE_FOR_Eci",""]],"struct":[["Eci",""]]});
+initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_Eci",""],["_IMPL_SERIALIZE_FOR_Eci",""]],"struct":[["Eci","Denotes the ECI position and velocity of an object."]]});

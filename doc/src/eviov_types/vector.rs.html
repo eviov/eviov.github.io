@@ -55,33 +55,44 @@
 <span id="55">55</span>
 <span id="56">56</span>
 <span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">derive_more</span>::{<span class="ident">Add</span>, <span class="ident">Neg</span>, <span class="ident">Sub</span>};
 <span class="kw">use</span> <span class="ident">num_traits</span>::{<span class="ident">Float</span>, <span class="ident">Num</span>};
 <span class="kw">use</span> <span class="ident">operator_sugar</span>::<span class="ident">operator</span>;
 <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
 
+<span class="doccomment">/// A general-purpose 2D vector.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Neg</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">Add</span>, <span class="ident">Sub</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Vector</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Num</span><span class="op">&gt;</span>(<span class="kw">pub</span> <span class="ident">T</span>, <span class="kw">pub</span> <span class="ident">T</span>);
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Num</span> <span class="op">+</span> <span class="ident">Copy</span><span class="op">&gt;</span> <span class="ident">Vector</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Evaluates the squared modulus of the vector.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">modulus_sq</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">T</span> {
         <span class="self">self</span>.<span class="number">0</span> <span class="op">*</span> <span class="self">self</span>.<span class="number">0</span> <span class="op">+</span> <span class="self">self</span>.<span class="number">1</span> <span class="op">*</span> <span class="self">self</span>.<span class="number">1</span>
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Num</span> <span class="op">+</span> <span class="ident">Float</span><span class="op">&gt;</span> <span class="ident">Vector</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Evaluates the modulus of the vector.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">modulus</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">T</span> {
         <span class="self">self</span>.<span class="ident">modulus_sq</span>().<span class="ident">sqrt</span>()
     }
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Num</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">Vector</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Returns a zero vector.</span>
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">Vector</span>(<span class="ident">T</span>::<span class="ident">zero</span>(), <span class="ident">T</span>::<span class="ident">zero</span>())
     }
 }
 
+<span class="doccomment">/// A special type of vector dedicated for scaling.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ScaleVector</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Num</span><span class="op">&gt;</span>(<span class="kw">pub</span> <span class="ident">T</span>, <span class="kw">pub</span> <span class="ident">T</span>);
 
@@ -92,6 +103,7 @@
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Num</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">ScaleVector</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Returns a scale vector that performs no scaling, i.e. (1, 1).</span>
     <span class="kw">fn</span> <span class="ident">default</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
         <span class="ident">ScaleVector</span>(<span class="ident">T</span>::<span class="ident">one</span>(), <span class="ident">T</span>::<span class="ident">one</span>())
     }
