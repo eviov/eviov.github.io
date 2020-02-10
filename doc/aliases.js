@@ -57,6 +57,7 @@ ALIASES["httparse"] = {};
 ALIASES["humantime"] = {};
 ALIASES["idna"] = {};
 ALIASES["input_buffer"] = {};
+ALIASES["instant"] = {};
 ALIASES["iovec"] = {};
 ALIASES["itertools"] = {};
 ALIASES["itoa"] = {};
