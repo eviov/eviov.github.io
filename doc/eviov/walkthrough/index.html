@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `walkthrough` mod in crate `eviov`."><meta name="keywords" content="rust, rustlang, rust-lang, walkthrough"><title>eviov::walkthrough - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../eviov/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Module walkthrough</p><div class="sidebar-elems"><p class='location'><a href='../index.html'>eviov</a></p><script>window.sidebarCurrent = {name: 'walkthrough', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/eviov/home/runner/work/eviov/eviov/target/debug/build/eviov-1b9a4255d1b915e3/out/walkthrough.rs.html#299' title='goto source code'>[src]</a></span><span class='in-band'>Module <a href='../index.html'>eviov</a>::<wbr><a class="mod" href=''>walkthrough</a></span></h1><div class='docblock'><p>Project walkthrough.</p>
+<p>This article guides through all aspects (including technical and gameplay) of
+this project.</p>
+<p>Note that this file is intended as technical reference, not a gameplay guide.</p>
+<h1 id="project-structure" class="section-header"><a href="#project-structure">Project structure</a></h1>
+<p>The client is a static page running a WASM module.
+The source code of the WASM module is located in the /client directory.</p>
+<p>The client may connect to arbitrary servers.
+Different types of servers expose different gamemodes,
+and the common code they share is located in the /server directory.
+Different servers may connect to each other (details explained below),
+forming a possibly-disconnected graph.
+Various gamemodes are implemented in crated under the /games directory.</p>
+<p>There are other direct/indirect library crates in the root directory
+for code that are shared between server and client.</p>
+<h1 id="game-mechanics" class="section-header"><a href="#game-mechanics">Game mechanics</a></h1>
+<p>The primary focus of this game is the mechanics arising from gravitational pull
+in a 2D world.</p>
+<h2 id="hierarchical-orbital-systems" class="section-header"><a href="#hierarchical-orbital-systems">Hierarchical orbital systems</a></h2>
+<p>This game does not implement real-life n-bodies mechanics.
+Instead, apart from the root object (nicknamed the &quot;Sun&quot;) which is stationary,
+every object (the &quot;child&quot;) orbits exactly one other object (the &quot;parent&quot;),
+and its motion relative to the parent is only influenced by its parent.
+Here, an &quot;object&quot; refers to anything that participates in the orbital motion,
+no matter parent or child.
+The only visible things that are not &quot;objects&quot; are either pure-cosmetic
+(such as the background texture of the game),
+or part of an object tightly connected together (such that they move together).</p>
+<p>To be precise, each &quot;large body&quot;
+(object that can exert gravitational pull on other objects) has a circular
+&quot;gravitational field&quot; (abbreviated as &quot;g-field&quot;) centered at its body.
+All large bodies have a finite radius (except possibly a Sun that should
+logically never be a child).
+If an object has zero acceleration and stays in the g-field of its parent,
+the locus of an object should be an ellipse with a focus at the parent,
+and the motion should be consistent with Kepler's laws of planetary motion,
+relative to its parent, with a small tolerance of computational error.</p>
+<p>A &quot;System&quot; refers to a large body and the external abstraction of its bodies.
+Each System is processed in its own coroutine.
+Different Systems might be processed on coroutines run on separate threads,
+separate processes or even separate machines.</p>
+<p>For &quot;small bodies&quot; (objects that are not large bodies),
+its logic is entirely handled by the System of its parent body.
+For large bodies, it should handle its internal logic,
+but the interaction with its parent should be handled by the parent.
+The parent should see each large body child as a blackbox,
+only knowing its g-field radius.</p>
+<h2 id="object-transfer" class="section-header"><a href="#object-transfer">Object transfer</a></h2>
+<p>When a child escapes the g-field of its parent,
+it should be &quot;transferred&quot; to the grandparent (the parent of its parent),
+such that the grandparent becomes the new parent of this child.</p>
+<p>When a child enters the g-field of another child large body of its parent,
+it should be transferred to the child,
+such that the other child large body becomes the new parent of this child
+(and so the original parent becomes the grandparent).</p>
+<p>In that case, all physical logic of the object should become handled by the
+new parent.
+The System of the original parent should send the data about the child to the
+System of the new parent through the <code>intra::EntityTransfer</code> message.
+If the child is a large body, the old parent System should send an
+<code>intra::StartTransfer</code> message before starting the transfer,
+and the new parent System should send an <code>intra::EndTransfer</code> message
+after completing the transfer setup.
+If the new System wants to immediately transfer the child object to another
+System (e.g. if the g-field of one of the child large bodies of the new parent
+intersects with the g-field of the old parent),
+it should perform the new transfer after sending the first <code>intra::EndTransfer</code>
+message.</p>
+<h2 id="netsplits" class="section-header"><a href="#netsplits">Netsplits</a></h2>
+<p>In the whole network, there might be multiple Suns.
+However, since there is no way for objects under different Suns to interact,
+generally speaking, we assume there is only one Sun.</p>
+<p>When the coroutine running a parent happens to have crashed, a netsplit occurs.
+Each of its children becomes a Sun, not connected to other children,
+nor to the grandparent system (the parent of the crashed parent).
+The new Sun, since it should have a finite g-field, should perform &quot;smooth
+collision&quot; (as defined below) on children approaching the boundary of its
+g-field.</p>
+<p>When the coroutine running a child happens to have crashed,
+the child should still be handled as a blackbox,
+but the parent should stop transferring objects into the child.
+Objects intersecting with the child g-field should perform &quot;smooth collision&quot;.</p>
+<p>&quot;Smooth collision&quot; is a mechanism similar to car-racing games bumping onto the
+roadbank, where the velocity component parallel to the radius is removed,
+such that the object only moves along the circumference.</p>
+<h2 id="distant-view" class="section-header"><a href="#distant-view">Distant view</a></h2>
+<p>Players have infinite Field of View, i.e. they can zoom out indefinitely.
+However, due to diffraciton of light,
+objects further away have reduced &quot;resolution&quot;,
+i.e. players can only see bigger objects at a distance.</p>
+<blockquote>
+<p>(The following feature might not be implemented)</p>
+<p>In addition, due to relativity, objects seen far away would delay in time.
+For example, if a spacecraft spawns at a location 8<em>c</em> away,
+it would appear on the client after 8 seconds.</p>
+</blockquote>
+<h1 id="protocol" class="section-header"><a href="#protocol">Protocol</a></h1>
+<p>In this section, a &quot;node&quot; refers to a party that can send or receive messages.
+A node can be a client, the communications manager of a server process, a
+System coroutine, or &quot;Hub servers&quot;.
+A Hub server is a logical server that handles non-physical events,
+such as player score, load balancing, etc.</p>
+<p>All communications go through the <code>Router</code>, which manages the internal and
+external communication routing.</p>
+<p>For each communication, there is a &quot;server&quot; endpoint and a &quot;client&quot; endpoint.
+Before the connection is created, the server first listens at a &quot;node address&quot;
+(an object ID for internal, a server address plus an object ID for external).
+The client requests through the router (or two routers for external) to connect
+to a server.</p>
+<p>Data are exchanged in units of messages.
+Messages of the similar type are grouped as the same endpoint of a &quot;protocol&quot;.
+Multiple protocols can be grouped as a &quot;protocol aggregate&quot;,
+which shares the same identification information and reuses the connection.</p>
+<p>When an external connection is created, the server sends a challenge query to
+the client.
+This can be an empty query, but it must be sent even if empty.
+The client then sends a reply (based on the query or otherwise).
+If the server accepts the query, it replies with a <code>ChallengeResult::Ok</code>
+message, otherwise <code>ChallengeResult::Fail</code> and closes the connection.
+Then, protocol-specific messages can be transferred through the aggregate
+wrapper packets.</p>
+<h2 id="time-synchronization" class="section-header"><a href="#time-synchronization">Time synchronization</a></h2>
+<p>Time synchronization is used to synchronize the &quot;game time&quot; between processes.
+Game time is represented as number of &quot;ticks&quot; (1 tick = 20ms, 50 ticks = 1s)
+since the &quot;Universal Epoch&quot;, which is the instant when the first node in the
+network started.</p>
+<p>Since nodes in the same process have the same system clock,
+Time synchronization only happens between nodes of different processes/machines.
+In addition, to avoid overloading,
+the server side of time synchronization can be System coroutines.</p>
+<p>Clients should only perform time synchronization with System servers.</p>
+<h3 id="request" class="section-header"><a href="#request">Request</a></h3>
+<p>The request contains a random <code>id</code> field.</p>
+<h3 id="response" class="section-header"><a href="#response">Response</a></h3>
+<p>The response contains the <code>id</code> from the request,
+as well as the <code>time</code>, the current game time.</p>
+<h2 id="client-system-connection" class="section-header"><a href="#client-system-connection">Client-system connection</a></h2>
+<p>Client-system connection is the wrapper protocol for multiple types
+(&quot;channels&quot;)
+of communication between the client and Systems.
+Systems in the same process communicate with the same client using the same
+websocket.</p>
+<h3 id="observer-channel" class="section-header"><a href="#observer-channel">Observer channel</a></h3>
+<p>The observer channel allows authorized clients to listen to events happening
+within the System.</p>
+<h4 id="handshake" class="section-header"><a href="#handshake">Handshake</a></h4>
+<p>When a client is allowed to start listening to events in a System
+(most likely authorized by the parent or child of the System),
+the System and the authorizer indirectly exchange an
+<code>intra::AllowObserve</code> message.
+<code>intra::AllowObserve::Response::token</code> is forwarded to the client,
+which uses the token to perform observer handshake to this System
+through the <code>cs::obs::Handshake::Request</code> message.</p>
+<h4 id="accept" class="section-header"><a href="#accept">Accept</a></h4>
+<p>If the System accepts the handshake, it responds with a
+<code>cs::obs::Handshake::Response</code> message.
+The response message contains the components of the center large body of the
+System, as well as the external traits of its children.</p>
+<h4 id="event" class="section-header"><a href="#event">Event</a></h4>
+<p>The <code>cs::obs::Event</code> message encapsulates events happening in the System.
+For example, <code>cs::obs::EventContent::Accel</code> sets the gravity-independent
+acceleration of a child object.</p>
+<h4 id="termination" class="section-header"><a href="#termination">Termination</a></h4>
+<p>When the authorization to listen to events is revoked,
+the authorizer sends an <code>intra::RevokeObserve</code> message to the System.
+Then the System would send a <code>cs::obs::Close</code> message to the client and close
+the connection.</p>
+<h3 id="controller-channel" class="section-header"><a href="#controller-channel">Controller channel</a></h3>
+<p>For gamemodes where the player controls a private object (&quot;spacecraft&quot;),
+the controller channel allows the player to toggle spacecraft controls.</p>
+<p>Controller channel takes place bteween the controlling client and the System
+that handles the spacecraft.
+If the spacecraft is transferred to another System,
+the Controller channel is closed, and the client should create one in the new System.</p>
+<p>Unresolved: what if two transfers happen in a short period of time?</p>
+<h4 id="handshake-1" class="section-header"><a href="#handshake-1">Handshake</a></h4>
+<p>A client gains access to a spacecraft by providing its ID and password
+through the <code>cs::ctrl::Handshake::Request</code> message.
+The password is a random <code>u64</code> generated by the server,
+and provided to the client most likely during game join.</p>
+<h4 id="accept-1" class="section-header"><a href="#accept-1">Accept</a></h4>
+<p>If the System accepts the handshake, it responds with a
+<code>cs::ctrl::Handshake::Response</code> message.
+This message provides information of various controls of the spacecraft.</p>
+<h4 id="control" class="section-header"><a href="#control">Control</a></h4>
+<p>The <code>cs::ctrl::Control</code> message encapsulates client actions to update the
+spacecraft controls.</p>
+<p>The <code>cs::ctrl::Update</code> message encapsulates events in the System
+(such as changes in energy levels)
+that only the rocket controller should receive.</p>
+<h2 id="client-hub-connection" class="section-header"><a href="#client-hub-connection">Client-hub connection</a></h2>
+<p>This connection exchanges information about general public data and
+player-specific data, such as online server list, accumulated score, etc.</p>
+<h2 id="intra-system-connection" class="section-header"><a href="#intra-system-connection">Intra-system connection</a></h2>
+<p>This connection exchanges information about object transfers.
+Since object transfer can only occur between parent and children,
+the connection only exists at this level.</p>
+<h3 id="object-transfer-1" class="section-header"><a href="#object-transfer-1">Object transfer</a></h3><h3 id="observer-authorization" class="section-header"><a href="#observer-authorization">Observer authorization</a></h3><h2 id="system-hub-connection" class="section-header"><a href="#system-hub-connection">System-hub connection</a></h2>
+<p>This connection allows Systems to retrieve and update persistent data about
+players, such as player accumulated score.</p>
+<h1 id="gamemodes" class="section-header"><a href="#gamemodes">Gamemodes</a></h1>
+<p>Adding more gamemodes is a late stage of development.
+In early stage, only the simplest Basic FFA mode is implemented.</p>
+<h2 id="basic-ffa" class="section-header"><a href="#basic-ffa">Basic FFA</a></h2>
+<p>Players join in one-time sessions (no progress is retained).
+Players are attached to a specific &quot;spacecraft&quot; (a type of small body),
+and control its acceleration in a restricted range.
+The spacecraft can produce &quot;missiles&quot; (another type of small body),
+ejected with a specific initial velocity.</p>
+<h3 id="durability" class="section-header"><a href="#durability">Durability</a></h3>
+<p>Both spacecrafts and missiles have &quot;durability&quot; (a type of scalar value).
+They disappear when durability reaches zero.</p>
+<p>Missiles lose durability over time.
+Spacecrafts also lose durability over time (at an quadratic increasing rate)
+if there is no player controlling it.</p>
+<p>When two objects collide (this requires better definition),
+their durability reduce at a different ratio,
+as defined by their &quot;resistance value&quot;.
+In Basic mode, all spacecrafts have the same resistance value,
+and all missiles have the same resistance value.</p>
+<h3 id="environment" class="section-header"><a href="#environment">Environment</a></h3>
+<p>Around a Sun, there are four planets, initially equally spaced in angle,
+with different radii from the Sun.
+Each planet has 2-3 children.</p>
+<h2 id="evo-ffa" class="section-header"><a href="#evo-ffa">Evo FFA</a></h2>
+<p>Similar to Basic FFA, but there exists various classes of spacecrafts,
+allowing variation in acceleration range, rotation speed, durability,
+resistance value and missile type.</p>
+<p>Different missile types also vary in ejection velocity, durability, resistance
+value, and possibly other logic.</p>
+<p>All players start with the basic class.
+Spacecrafts can pick up floating space debris to increase their &quot;energy level&quot;,
+which can be used to transform the spacecraft into other classes.
+Energy level can also be increased by destroying other spacecrafts.</p>
+<h2 id="expert-ffa" class="section-header"><a href="#expert-ffa">Expert FFA</a></h2>
+<p>Similar to Evo FFA, but there is an additional constraint of fuel.
+All operations consume fuel, and the player has to pick up hydrogen and oxygen
+orbs in space in order to refill the fuel.</p>
+<h1 id="client-display" class="section-header"><a href="#client-display">Client display</a></h1></div></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "eviov";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

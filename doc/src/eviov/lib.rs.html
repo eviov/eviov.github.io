@@ -43,10 +43,16 @@
 <span id="43">43</span>
 <span id="44">44</span>
 <span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! The main common crate for the client and servers.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! This crate reexports items defined in other subcrates.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! See [mod walkthrough](./walkthrough/index.html) for a technical walkthrough  of the project.</span>
 
 <span class="attribute">#![<span class="ident">feature</span>(<span class="ident">type_alias_impl_trait</span>, <span class="ident">option_expect_none</span>)]</span>
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>, <span class="ident">unused_variables</span>, <span class="ident">unreachable_code</span>)]</span>
@@ -80,6 +86,8 @@
 
 <span class="kw">mod</span> <span class="ident">orbit</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">orbit</span>::<span class="kw-2">*</span>;
+
+<span class="macro">include</span><span class="macro">!</span>(<span class="macro">concat</span><span class="macro">!</span>(<span class="macro">env</span><span class="macro">!</span>(<span class="string">&quot;OUT_DIR&quot;</span>), <span class="string">&quot;/walkthrough.rs&quot;</span>));
 
 <span class="doccomment">/// General-purpose enum to denote the termination action of a looping function.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>)]</span>
