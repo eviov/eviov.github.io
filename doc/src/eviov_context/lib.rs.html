@@ -76,6 +76,9 @@
 <span id="76">76</span>
 <span id="77">77</span>
 <span id="78">78</span>
+<span id="79">79</span>
+<span id="80">80</span>
+<span id="81">81</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">dead_code</span>, <span class="ident">unused_variables</span>, <span class="ident">unreachable_code</span>)]</span>
 <span class="attribute">#![<span class="ident">warn</span>(
@@ -111,11 +114,14 @@
 
 <span class="doccomment">/// Implementation for client crates compiling to WASM.</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;wasm&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">wasm</span>;
+<span class="kw">mod</span> <span class="ident">wasm</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;wasm&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">wasm</span>::<span class="kw-2">*</span>;
 
-<span class="doccomment">/// Implementation for server crates compiling to native.</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;not-wasm&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">tokio</span>;
+<span class="kw">mod</span> <span class="ident">tokio</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;not-wasm&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="self">self</span>::<span class="ident">tokio</span>::<span class="kw-2">*</span>;
 
 <span class="doccomment">/// Context-dependent primitives.</span>
 <span class="attribute">#[<span class="ident">async_trait</span>]</span>
