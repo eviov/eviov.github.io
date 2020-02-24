@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["AllReceivers","A typemap for the protocol receivers registered on this process."],["Receivers","A mapping of receivers to nodes."]],"trait":[["Receiver","The interface to open connections."]]});

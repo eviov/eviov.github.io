@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["InternalOpenError","Error for opening internal communication."],["OpenError","Error for opening external or internal communication."]]});

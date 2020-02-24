@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Handle","A channel sender/receiver abstraction for both local and websocket communication."]]});
