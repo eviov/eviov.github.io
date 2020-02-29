@@ -33,10 +33,10 @@
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">Add</span>, <span class="ident">Sub</span>, <span class="ident">CopyGetters</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Eci</span> {
     <span class="doccomment">/// The position value</span>
-    <span class="attribute">#[<span class="ident">get_copy</span> <span class="op">=</span> <span class="string">&quot;pub&quot;</span>]</span>
+    <span class="attribute">#[<span class="ident">getset</span>(<span class="ident">get_copy</span> <span class="op">=</span> <span class="string">&quot;pub&quot;</span>)]</span>
     <span class="ident">position</span>: <span class="ident">Vector</span><span class="op">&lt;</span><span class="ident">Length</span><span class="op">&gt;</span>,
     <span class="doccomment">/// The velocity value</span>
-    <span class="attribute">#[<span class="ident">get_copy</span> <span class="op">=</span> <span class="string">&quot;pub&quot;</span>]</span>
+    <span class="attribute">#[<span class="ident">getset</span>(<span class="ident">get_copy</span> <span class="op">=</span> <span class="string">&quot;pub&quot;</span>)]</span>
     <span class="ident">velocity</span>: <span class="ident">Vector</span><span class="op">&lt;</span><span class="ident">Length</span><span class="op">&gt;</span>,
 }
 </pre></div>
