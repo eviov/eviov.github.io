@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/web-sys-0.3.36/src/features/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../web_sys/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/web-sys-0.3.37/src/features/mod.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>mod.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../web_sys/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -7605,6 +7605,198 @@
 <span id="7605">7605</span>
 <span id="7606">7606</span>
 <span id="7607">7607</span>
+<span id="7608">7608</span>
+<span id="7609">7609</span>
+<span id="7610">7610</span>
+<span id="7611">7611</span>
+<span id="7612">7612</span>
+<span id="7613">7613</span>
+<span id="7614">7614</span>
+<span id="7615">7615</span>
+<span id="7616">7616</span>
+<span id="7617">7617</span>
+<span id="7618">7618</span>
+<span id="7619">7619</span>
+<span id="7620">7620</span>
+<span id="7621">7621</span>
+<span id="7622">7622</span>
+<span id="7623">7623</span>
+<span id="7624">7624</span>
+<span id="7625">7625</span>
+<span id="7626">7626</span>
+<span id="7627">7627</span>
+<span id="7628">7628</span>
+<span id="7629">7629</span>
+<span id="7630">7630</span>
+<span id="7631">7631</span>
+<span id="7632">7632</span>
+<span id="7633">7633</span>
+<span id="7634">7634</span>
+<span id="7635">7635</span>
+<span id="7636">7636</span>
+<span id="7637">7637</span>
+<span id="7638">7638</span>
+<span id="7639">7639</span>
+<span id="7640">7640</span>
+<span id="7641">7641</span>
+<span id="7642">7642</span>
+<span id="7643">7643</span>
+<span id="7644">7644</span>
+<span id="7645">7645</span>
+<span id="7646">7646</span>
+<span id="7647">7647</span>
+<span id="7648">7648</span>
+<span id="7649">7649</span>
+<span id="7650">7650</span>
+<span id="7651">7651</span>
+<span id="7652">7652</span>
+<span id="7653">7653</span>
+<span id="7654">7654</span>
+<span id="7655">7655</span>
+<span id="7656">7656</span>
+<span id="7657">7657</span>
+<span id="7658">7658</span>
+<span id="7659">7659</span>
+<span id="7660">7660</span>
+<span id="7661">7661</span>
+<span id="7662">7662</span>
+<span id="7663">7663</span>
+<span id="7664">7664</span>
+<span id="7665">7665</span>
+<span id="7666">7666</span>
+<span id="7667">7667</span>
+<span id="7668">7668</span>
+<span id="7669">7669</span>
+<span id="7670">7670</span>
+<span id="7671">7671</span>
+<span id="7672">7672</span>
+<span id="7673">7673</span>
+<span id="7674">7674</span>
+<span id="7675">7675</span>
+<span id="7676">7676</span>
+<span id="7677">7677</span>
+<span id="7678">7678</span>
+<span id="7679">7679</span>
+<span id="7680">7680</span>
+<span id="7681">7681</span>
+<span id="7682">7682</span>
+<span id="7683">7683</span>
+<span id="7684">7684</span>
+<span id="7685">7685</span>
+<span id="7686">7686</span>
+<span id="7687">7687</span>
+<span id="7688">7688</span>
+<span id="7689">7689</span>
+<span id="7690">7690</span>
+<span id="7691">7691</span>
+<span id="7692">7692</span>
+<span id="7693">7693</span>
+<span id="7694">7694</span>
+<span id="7695">7695</span>
+<span id="7696">7696</span>
+<span id="7697">7697</span>
+<span id="7698">7698</span>
+<span id="7699">7699</span>
+<span id="7700">7700</span>
+<span id="7701">7701</span>
+<span id="7702">7702</span>
+<span id="7703">7703</span>
+<span id="7704">7704</span>
+<span id="7705">7705</span>
+<span id="7706">7706</span>
+<span id="7707">7707</span>
+<span id="7708">7708</span>
+<span id="7709">7709</span>
+<span id="7710">7710</span>
+<span id="7711">7711</span>
+<span id="7712">7712</span>
+<span id="7713">7713</span>
+<span id="7714">7714</span>
+<span id="7715">7715</span>
+<span id="7716">7716</span>
+<span id="7717">7717</span>
+<span id="7718">7718</span>
+<span id="7719">7719</span>
+<span id="7720">7720</span>
+<span id="7721">7721</span>
+<span id="7722">7722</span>
+<span id="7723">7723</span>
+<span id="7724">7724</span>
+<span id="7725">7725</span>
+<span id="7726">7726</span>
+<span id="7727">7727</span>
+<span id="7728">7728</span>
+<span id="7729">7729</span>
+<span id="7730">7730</span>
+<span id="7731">7731</span>
+<span id="7732">7732</span>
+<span id="7733">7733</span>
+<span id="7734">7734</span>
+<span id="7735">7735</span>
+<span id="7736">7736</span>
+<span id="7737">7737</span>
+<span id="7738">7738</span>
+<span id="7739">7739</span>
+<span id="7740">7740</span>
+<span id="7741">7741</span>
+<span id="7742">7742</span>
+<span id="7743">7743</span>
+<span id="7744">7744</span>
+<span id="7745">7745</span>
+<span id="7746">7746</span>
+<span id="7747">7747</span>
+<span id="7748">7748</span>
+<span id="7749">7749</span>
+<span id="7750">7750</span>
+<span id="7751">7751</span>
+<span id="7752">7752</span>
+<span id="7753">7753</span>
+<span id="7754">7754</span>
+<span id="7755">7755</span>
+<span id="7756">7756</span>
+<span id="7757">7757</span>
+<span id="7758">7758</span>
+<span id="7759">7759</span>
+<span id="7760">7760</span>
+<span id="7761">7761</span>
+<span id="7762">7762</span>
+<span id="7763">7763</span>
+<span id="7764">7764</span>
+<span id="7765">7765</span>
+<span id="7766">7766</span>
+<span id="7767">7767</span>
+<span id="7768">7768</span>
+<span id="7769">7769</span>
+<span id="7770">7770</span>
+<span id="7771">7771</span>
+<span id="7772">7772</span>
+<span id="7773">7773</span>
+<span id="7774">7774</span>
+<span id="7775">7775</span>
+<span id="7776">7776</span>
+<span id="7777">7777</span>
+<span id="7778">7778</span>
+<span id="7779">7779</span>
+<span id="7780">7780</span>
+<span id="7781">7781</span>
+<span id="7782">7782</span>
+<span id="7783">7783</span>
+<span id="7784">7784</span>
+<span id="7785">7785</span>
+<span id="7786">7786</span>
+<span id="7787">7787</span>
+<span id="7788">7788</span>
+<span id="7789">7789</span>
+<span id="7790">7790</span>
+<span id="7791">7791</span>
+<span id="7792">7792</span>
+<span id="7793">7793</span>
+<span id="7794">7794</span>
+<span id="7795">7795</span>
+<span id="7796">7796</span>
+<span id="7797">7797</span>
+<span id="7798">7798</span>
+<span id="7799">7799</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;AbortController&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
@@ -9712,17 +9904,17 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroup&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_GpuBindGroup</span>::<span class="kw-2">*</span>;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupBinding&quot;</span>)]</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-<span class="kw">mod</span> <span class="ident">gen_GpuBindGroupBinding</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupBinding&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_GpuBindGroupBinding</span>::<span class="kw-2">*</span>;
-
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupDescriptor&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
 <span class="kw">mod</span> <span class="ident">gen_GpuBindGroupDescriptor</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupDescriptor&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_GpuBindGroupDescriptor</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupEntry&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_GpuBindGroupEntry</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupEntry&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_GpuBindGroupEntry</span>::<span class="kw-2">*</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupLayout&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
@@ -9730,17 +9922,17 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupLayout&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_GpuBindGroupLayout</span>::<span class="kw-2">*</span>;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupLayoutBinding&quot;</span>)]</span>
-<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
-<span class="kw">mod</span> <span class="ident">gen_GpuBindGroupLayoutBinding</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupLayoutBinding&quot;</span>)]</span>
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_GpuBindGroupLayoutBinding</span>::<span class="kw-2">*</span>;
-
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupLayoutDescriptor&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
 <span class="kw">mod</span> <span class="ident">gen_GpuBindGroupLayoutDescriptor</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupLayoutDescriptor&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_GpuBindGroupLayoutDescriptor</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupLayoutEntry&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_GpuBindGroupLayoutEntry</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindGroupLayoutEntry&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_GpuBindGroupLayoutEntry</span>::<span class="kw-2">*</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;GpuBindingType&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
@@ -15195,6 +15387,198 @@
 <span class="kw">mod</span> <span class="ident">gen_XmlSerializer</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XmlSerializer&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XmlSerializer</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;Xr&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_Xr</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;Xr&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_Xr</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrBoundedReferenceSpace&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrBoundedReferenceSpace</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrBoundedReferenceSpace&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrBoundedReferenceSpace</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrEye&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrEye</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrEye&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrEye</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrFrame&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrFrame</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrFrame&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrFrame</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrHandedness&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrHandedness</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrHandedness&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrHandedness</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSource&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrInputSource</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSource&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrInputSource</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSourceArray&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrInputSourceArray</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSourceArray&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrInputSourceArray</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSourceEvent&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrInputSourceEvent</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSourceEvent&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrInputSourceEvent</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSourceEventInit&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrInputSourceEventInit</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSourceEventInit&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrInputSourceEventInit</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSourcesChangeEvent&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrInputSourcesChangeEvent</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSourcesChangeEvent&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrInputSourcesChangeEvent</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSourcesChangeEventInit&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrInputSourcesChangeEventInit</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrInputSourcesChangeEventInit&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrInputSourcesChangeEventInit</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrPose&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrPose</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrPose&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrPose</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrReferenceSpace&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrReferenceSpace</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrReferenceSpace&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrReferenceSpace</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrReferenceSpaceEvent&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrReferenceSpaceEvent</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrReferenceSpaceEvent&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrReferenceSpaceEvent</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrReferenceSpaceEventInit&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrReferenceSpaceEventInit</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrReferenceSpaceEventInit&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrReferenceSpaceEventInit</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrReferenceSpaceType&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrReferenceSpaceType</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrReferenceSpaceType&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrReferenceSpaceType</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrRenderState&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrRenderState</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrRenderState&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrRenderState</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrRenderStateInit&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrRenderStateInit</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrRenderStateInit&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrRenderStateInit</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrRigidTransform&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrRigidTransform</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrRigidTransform&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrRigidTransform</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSession&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrSession</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSession&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrSession</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSessionEvent&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrSessionEvent</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSessionEvent&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrSessionEvent</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSessionEventInit&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrSessionEventInit</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSessionEventInit&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrSessionEventInit</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSessionInit&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrSessionInit</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSessionInit&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrSessionInit</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSessionMode&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrSessionMode</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSessionMode&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrSessionMode</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSpace&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrSpace</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrSpace&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrSpace</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrTargetRayMode&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrTargetRayMode</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrTargetRayMode&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrTargetRayMode</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrView&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrView</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrView&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrView</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrViewerPose&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrViewerPose</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrViewerPose&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrViewerPose</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrViewport&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrViewport</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrViewport&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrViewport</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrVisibilityState&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrVisibilityState</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrVisibilityState&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrVisibilityState</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrWebGlLayer&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrWebGlLayer</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrWebGlLayer&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrWebGlLayer</span>::<span class="kw-2">*</span>;
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrWebGlLayerInit&quot;</span>)]</span>
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
+<span class="kw">mod</span> <span class="ident">gen_XrWebGlLayerInit</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XrWebGlLayerInit&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">gen_XrWebGlLayerInit</span>::<span class="kw-2">*</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;XsltProcessor&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_snake_case</span>)]</span>
