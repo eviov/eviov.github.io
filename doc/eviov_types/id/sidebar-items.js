@@ -1,1 +1,1 @@
-initSidebarItems({"constant":[["_IMPL_DESERIALIZE_FOR_ObjectId",""],["_IMPL_SERIALIZE_FOR_ObjectId",""]],"struct":[["ObjectId","A network-unique runtime identifier for objects."]]});
+initSidebarItems({"struct":[["ObjectId","A network-unique runtime identifier for objects."]]});
