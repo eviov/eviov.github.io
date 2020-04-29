@@ -79,6 +79,7 @@ ALIASES["net2"] = {};
 ALIASES["num_cpus"] = {};
 ALIASES["num_derive"] = {};
 ALIASES["num_traits"] = {};
+ALIASES["once_cell"] = {};
 ALIASES["opaque_debug"] = {};
 ALIASES["operator_sugar"] = {};
 ALIASES["parking_lot"] = {};

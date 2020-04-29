@@ -79,6 +79,7 @@ sourcesIndex["net2"] = {"name":"","dirs":[{"name":"sys","dirs":[{"name":"unix","
 sourcesIndex["num_cpus"] = {"name":"","files":["lib.rs"]};
 sourcesIndex["num_derive"] = {"name":"","files":["lib.rs"]};
 sourcesIndex["num_traits"] = {"name":"","dirs":[{"name":"ops","files":["checked.rs","inv.rs","mod.rs","mul_add.rs","saturating.rs","wrapping.rs"]}],"files":["bounds.rs","cast.rs","float.rs","identities.rs","int.rs","lib.rs","macros.rs","pow.rs","real.rs","sign.rs"]};
+sourcesIndex["once_cell"] = {"name":"","files":["imp_std.rs","lib.rs"]};
 sourcesIndex["opaque_debug"] = {"name":"","files":["lib.rs"]};
 sourcesIndex["operator_sugar"] = {"name":"","files":["lib.rs"]};
 sourcesIndex["parking_lot"] = {"name":"","files":["condvar.rs","deadlock.rs","elision.rs","lib.rs","mutex.rs","once.rs","raw_mutex.rs","raw_rwlock.rs","remutex.rs","rwlock.rs","util.rs"]};
