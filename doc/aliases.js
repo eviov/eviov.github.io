@@ -110,7 +110,6 @@ ALIASES["regex_syntax"] = {};
 ALIASES["ring"] = {};
 ALIASES["rmp"] = {};
 ALIASES["rmp_serde"] = {};
-ALIASES["rustversion"] = {};
 ALIASES["ryu"] = {};
 ALIASES["scopeguard"] = {};
 ALIASES["serde"] = {};
