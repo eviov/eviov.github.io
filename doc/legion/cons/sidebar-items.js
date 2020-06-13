@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["ConsAppend","Prepend a new type into a cons list"],["ConsFlatten","transform cons list into a flat tuple"],["ConsPrepend","Prepend a new type into a cons list"]]});
