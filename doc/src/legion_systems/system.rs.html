@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/legion-systems-0.2.2/src/system.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>system.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../legion_systems/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/legion-systems-0.2.3/src/system.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>system.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../legion_systems/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1110,6 +1110,23 @@
 <span id="1110">1110</span>
 <span id="1111">1111</span>
 <span id="1112">1112</span>
+<span id="1113">1113</span>
+<span id="1114">1114</span>
+<span id="1115">1115</span>
+<span id="1116">1116</span>
+<span id="1117">1117</span>
+<span id="1118">1118</span>
+<span id="1119">1119</span>
+<span id="1120">1120</span>
+<span id="1121">1121</span>
+<span id="1122">1122</span>
+<span id="1123">1123</span>
+<span id="1124">1124</span>
+<span id="1125">1125</span>
+<span id="1126">1126</span>
+<span id="1127">1127</span>
+<span id="1128">1128</span>
+<span id="1129">1129</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">resource</span>::{<span class="ident">Resource</span>, <span class="ident">ResourceSet</span>, <span class="ident">ResourceTypeId</span>, <span class="ident">Resources</span>};
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">schedule</span>::{<span class="ident">Runnable</span>, <span class="ident">Schedulable</span>};
@@ -1122,9 +1139,10 @@
     <span class="ident">cons</span>::{<span class="ident">ConsAppend</span>, <span class="ident">ConsFlatten</span>},
     <span class="ident">filter</span>::<span class="ident">EntityFilter</span>,
     <span class="ident">index</span>::<span class="ident">ArchetypeIndex</span>,
+    <span class="ident">permission</span>::<span class="ident">Permissions</span>,
     <span class="ident">query</span>::{<span class="ident">Query</span>, <span class="ident">Read</span>, <span class="ident">View</span>, <span class="ident">Write</span>},
     <span class="ident">storage</span>::{<span class="ident">Component</span>, <span class="ident">ComponentTypeId</span>, <span class="ident">TagTypeId</span>},
-    <span class="ident">subworld</span>::{<span class="ident">Access</span>, <span class="ident">ArchetypeAccess</span>, <span class="ident">SubWorld</span>},
+    <span class="ident">subworld</span>::{<span class="ident">ArchetypeAccess</span>, <span class="ident">SubWorld</span>},
     <span class="ident">world</span>::{<span class="ident">World</span>, <span class="ident">WorldId</span>},
 };
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">any</span>::<span class="ident">TypeId</span>;
@@ -1136,9 +1154,9 @@
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Derivative</span>, <span class="ident">Debug</span>, <span class="ident">Clone</span>)]</span>
 <span class="attribute">#[<span class="ident">derivative</span>(<span class="ident">Default</span>(<span class="ident">bound</span> <span class="op">=</span> <span class="string">&quot;&quot;</span>))]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">SystemAccess</span> {
-    <span class="kw">pub</span> <span class="ident">resources</span>: <span class="ident">Access</span><span class="op">&lt;</span><span class="ident">ResourceTypeId</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">components</span>: <span class="ident">Access</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span>,
-    <span class="kw">pub</span> <span class="ident">tags</span>: <span class="ident">Access</span><span class="op">&lt;</span><span class="ident">TagTypeId</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span> <span class="ident">resources</span>: <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">ResourceTypeId</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span> <span class="ident">components</span>: <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span>,
+    <span class="kw">pub</span> <span class="ident">tags</span>: <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">TagTypeId</span><span class="op">&gt;</span>,
 }
 
 <span class="doccomment">/// This trait is for providing abstraction across tuples of queries for populating the type</span>
@@ -1291,12 +1309,15 @@
     <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">SystemId</span> { <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">name</span> }
 
     <span class="kw">fn</span> <span class="ident">reads</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="kw-2">&amp;</span>[<span class="ident">ResourceTypeId</span>], <span class="kw-2">&amp;</span>[<span class="ident">ComponentTypeId</span>]) {
-        (<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">access</span>.<span class="ident">resources</span>.<span class="ident">reads</span>, <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">access</span>.<span class="ident">components</span>.<span class="ident">reads</span>)
+        (
+            <span class="self">self</span>.<span class="ident">access</span>.<span class="ident">resources</span>.<span class="ident">reads</span>(),
+            <span class="self">self</span>.<span class="ident">access</span>.<span class="ident">components</span>.<span class="ident">reads</span>(),
+        )
     }
     <span class="kw">fn</span> <span class="ident">writes</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="kw-2">&amp;</span>[<span class="ident">ResourceTypeId</span>], <span class="kw-2">&amp;</span>[<span class="ident">ComponentTypeId</span>]) {
         (
-            <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">access</span>.<span class="ident">resources</span>.<span class="ident">writes</span>,
-            <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">access</span>.<span class="ident">components</span>.<span class="ident">writes</span>,
+            <span class="self">self</span>.<span class="ident">access</span>.<span class="ident">resources</span>.<span class="ident">writes</span>(),
+            <span class="self">self</span>.<span class="ident">access</span>.<span class="ident">components</span>.<span class="ident">writes</span>(),
         )
     }
 
@@ -1419,8 +1440,8 @@
     <span class="ident">queries</span>: <span class="ident">Q</span>,
     <span class="ident">resources</span>: <span class="ident">R</span>,
 
-    <span class="ident">resource_access</span>: <span class="ident">Access</span><span class="op">&lt;</span><span class="ident">ResourceTypeId</span><span class="op">&gt;</span>,
-    <span class="ident">component_access</span>: <span class="ident">Access</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span>,
+    <span class="ident">resource_access</span>: <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">ResourceTypeId</span><span class="op">&gt;</span>,
+    <span class="ident">component_access</span>: <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span>,
     <span class="ident">access_all_archetypes</span>: <span class="ident">bool</span>,
 }
 
@@ -1434,8 +1455,8 @@
             <span class="ident">name</span>: <span class="ident">name</span>.<span class="ident">into</span>(),
             <span class="ident">queries</span>: (),
             <span class="ident">resources</span>: (),
-            <span class="ident">resource_access</span>: <span class="ident">Access</span>::<span class="ident">default</span>(),
-            <span class="ident">component_access</span>: <span class="ident">Access</span>::<span class="ident">default</span>(),
+            <span class="ident">resource_access</span>: <span class="ident">Permissions</span>::<span class="ident">default</span>(),
+            <span class="ident">component_access</span>: <span class="ident">Permissions</span>::<span class="ident">default</span>(),
             <span class="ident">access_all_archetypes</span>: <span class="bool-val">false</span>,
         }
     }
@@ -1460,8 +1481,7 @@
         <span class="ident">F</span>: <span class="lifetime">&#39;static</span> <span class="op">+</span> <span class="ident">EntityFilter</span>,
         <span class="ident">Q</span>: <span class="ident">ConsAppend</span><span class="op">&lt;</span><span class="ident">Query</span><span class="op">&lt;</span><span class="ident">V</span>, <span class="ident">F</span><span class="op">&gt;</span><span class="op">&gt;</span>,
     {
-        <span class="self">self</span>.<span class="ident">component_access</span>.<span class="ident">reads</span>.<span class="ident">extend</span>(<span class="ident">V</span>::<span class="ident">read_types</span>().<span class="ident">iter</span>());
-        <span class="self">self</span>.<span class="ident">component_access</span>.<span class="ident">writes</span>.<span class="ident">extend</span>(<span class="ident">V</span>::<span class="ident">write_types</span>().<span class="ident">iter</span>());
+        <span class="self">self</span>.<span class="ident">component_access</span>.<span class="ident">add</span>(<span class="ident">V</span>::<span class="ident">requires_permissions</span>());
 
         <span class="ident">SystemBuilder</span> {
             <span class="ident">name</span>: <span class="self">self</span>.<span class="ident">name</span>,
@@ -1483,7 +1503,7 @@
         <span class="ident">R</span>: <span class="ident">ConsAppend</span><span class="op">&lt;</span><span class="ident">Read</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>,
         <span class="op">&lt;</span><span class="ident">R</span> <span class="kw">as</span> <span class="ident">ConsAppend</span><span class="op">&lt;</span><span class="ident">Read</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>::<span class="ident">Output</span>: <span class="ident">ConsFlatten</span>,
     {
-        <span class="self">self</span>.<span class="ident">resource_access</span>.<span class="ident">reads</span>.<span class="ident">push</span>(<span class="ident">ResourceTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
+        <span class="self">self</span>.<span class="ident">resource_access</span>.<span class="ident">push_read</span>(<span class="ident">ResourceTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
 
         <span class="ident">SystemBuilder</span> {
             <span class="ident">name</span>: <span class="self">self</span>.<span class="ident">name</span>,
@@ -1505,7 +1525,7 @@
         <span class="ident">R</span>: <span class="ident">ConsAppend</span><span class="op">&lt;</span><span class="ident">Write</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span>,
         <span class="op">&lt;</span><span class="ident">R</span> <span class="kw">as</span> <span class="ident">ConsAppend</span><span class="op">&lt;</span><span class="ident">Write</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span><span class="op">&gt;</span><span class="op">&gt;</span>::<span class="ident">Output</span>: <span class="ident">ConsFlatten</span>,
     {
-        <span class="self">self</span>.<span class="ident">resource_access</span>.<span class="ident">writes</span>.<span class="ident">push</span>(<span class="ident">ResourceTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
+        <span class="self">self</span>.<span class="ident">resource_access</span>.<span class="ident">push</span>(<span class="ident">ResourceTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
 
         <span class="ident">SystemBuilder</span> {
             <span class="ident">name</span>: <span class="self">self</span>.<span class="ident">name</span>,
@@ -1531,7 +1551,7 @@
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">Component</span>,
     {
-        <span class="self">self</span>.<span class="ident">component_access</span>.<span class="ident">reads</span>.<span class="ident">push</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
+        <span class="self">self</span>.<span class="ident">component_access</span>.<span class="ident">push_read</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
         <span class="self">self</span>.<span class="ident">access_all_archetypes</span> <span class="op">=</span> <span class="bool-val">true</span>;
 
         <span class="self">self</span>
@@ -1551,9 +1571,7 @@
     <span class="kw">where</span>
         <span class="ident">T</span>: <span class="ident">Component</span>,
     {
-        <span class="self">self</span>.<span class="ident">component_access</span>
-            .<span class="ident">writes</span>
-            .<span class="ident">push</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
+        <span class="self">self</span>.<span class="ident">component_access</span>.<span class="ident">push</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
         <span class="self">self</span>.<span class="ident">access_all_archetypes</span> <span class="op">=</span> <span class="bool-val">true</span>;
 
         <span class="self">self</span>
@@ -1592,7 +1610,7 @@
             <span class="ident">access</span>: <span class="ident">SystemAccess</span> {
                 <span class="ident">resources</span>: <span class="self">self</span>.<span class="ident">resource_access</span>,
                 <span class="ident">components</span>: <span class="self">self</span>.<span class="ident">component_access</span>,
-                <span class="ident">tags</span>: <span class="ident">Access</span>::<span class="ident">default</span>(),
+                <span class="ident">tags</span>: <span class="ident">Permissions</span>::<span class="ident">default</span>(),
             },
             <span class="ident">command_buffer</span>: <span class="ident">FxHashMap</span>::<span class="ident">default</span>(),
         })
@@ -1627,7 +1645,7 @@
             <span class="ident">access</span>: <span class="ident">SystemAccess</span> {
                 <span class="ident">resources</span>: <span class="self">self</span>.<span class="ident">resource_access</span>,
                 <span class="ident">components</span>: <span class="self">self</span>.<span class="ident">component_access</span>,
-                <span class="ident">tags</span>: <span class="ident">Access</span>::<span class="ident">default</span>(),
+                <span class="ident">tags</span>: <span class="ident">Permissions</span>::<span class="ident">default</span>(),
             },
             <span class="ident">command_buffer</span>: <span class="ident">FxHashMap</span>::<span class="ident">default</span>(),
         })
@@ -2220,6 +2238,22 @@
             });
 
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">schedule</span> <span class="op">=</span> <span class="ident">Schedule</span>::<span class="ident">builder</span>().<span class="ident">add_system</span>(<span class="ident">system</span>).<span class="ident">build</span>();
+        <span class="ident">schedule</span>.<span class="ident">execute</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">world</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Resources</span>::<span class="ident">default</span>());
+    }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">split_world2</span>() {
+        <span class="kw">let</span> <span class="ident">system</span> <span class="op">=</span> <span class="ident">SystemBuilder</span>::<span class="ident">new</span>(<span class="string">&quot;system&quot;</span>)
+            .<span class="ident">with_query</span>(<span class="op">&lt;</span>(<span class="ident">Read</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span>, <span class="ident">Write</span><span class="op">&lt;</span><span class="ident">isize</span><span class="op">&gt;</span>)<span class="op">&gt;</span>::<span class="ident">query</span>())
+            .<span class="ident">write_component</span>::<span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span>()
+            .<span class="ident">build_thread_local</span>(<span class="kw">move</span> <span class="op">|</span><span class="kw">_</span>, <span class="ident">world</span>, <span class="kw">_</span>, <span class="ident">query</span><span class="op">|</span> {
+                <span class="kw">let</span> (<span class="kw">_</span>, <span class="kw-2">mut</span> <span class="ident">world</span>) <span class="op">=</span> <span class="ident">world</span>.<span class="ident">split_for_query</span>(<span class="kw-2">&amp;</span><span class="ident">query</span>);
+                <span class="kw">let</span> (<span class="kw">_</span>, <span class="kw">_</span>) <span class="op">=</span> <span class="ident">world</span>.<span class="ident">split</span>::<span class="op">&lt;</span><span class="ident">Write</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span><span class="op">&gt;</span>();
+            });
+
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">schedule</span> <span class="op">=</span> <span class="ident">Schedule</span>::<span class="ident">builder</span>().<span class="ident">add_thread_local</span>(<span class="ident">system</span>).<span class="ident">build</span>();
+
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">world</span> <span class="op">=</span> <span class="ident">World</span>::<span class="ident">new</span>();
         <span class="ident">schedule</span>.<span class="ident">execute</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">world</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Resources</span>::<span class="ident">default</span>());
     }
 }

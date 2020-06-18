@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/legion-core-0.2.2/src/query.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>query.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../legion_core/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/legion-core-0.2.3/src/query.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>query.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../legion_core/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -1777,15 +1777,6 @@
 <span id="1777">1777</span>
 <span id="1778">1778</span>
 <span id="1779">1779</span>
-<span id="1780">1780</span>
-<span id="1781">1781</span>
-<span id="1782">1782</span>
-<span id="1783">1783</span>
-<span id="1784">1784</span>
-<span id="1785">1785</span>
-<span id="1786">1786</span>
-<span id="1787">1787</span>
-<span id="1788">1788</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">borrow</span>::<span class="ident">RefIter</span>;
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">borrow</span>::<span class="ident">RefIterMut</span>;
@@ -1818,7 +1809,7 @@
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">storage</span>::<span class="ident">Tag</span>;
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">storage</span>::<span class="ident">TagTypeId</span>;
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">subworld</span>::{<span class="ident">ComponentAccess</span>, <span class="ident">StorageAccessor</span>};
-<span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">world</span>::<span class="ident">EntityStore</span>;
+<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">permission</span>::<span class="ident">Permissions</span>, <span class="ident">world</span>::<span class="ident">EntityStore</span>};
 <span class="kw">use</span> <span class="ident">derivative</span>::<span class="ident">Derivative</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">any</span>::<span class="ident">TypeId</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">iter</span>::<span class="ident">Enumerate</span>;
@@ -1860,11 +1851,8 @@
     <span class="doccomment">/// Determines if the view writes to the specified data type.</span>
     <span class="kw">fn</span> <span class="ident">writes</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">Component</span><span class="op">&gt;</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span>;
 
-    <span class="doccomment">/// Returns an array of the components read by this view</span>
-    <span class="kw">fn</span> <span class="ident">read_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span>;
-
-    <span class="doccomment">/// Returns an array of the components written by this view</span>
-    <span class="kw">fn</span> <span class="ident">write_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span>;
+    <span class="doccomment">/// Returns the set of permissions required by the view.</span>
+    <span class="kw">fn</span> <span class="ident">requires_permissions</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span>;
 }
 
 <span class="doccomment">/// A type which can construct a default entity filter.</span>
@@ -1950,12 +1938,14 @@
 
     <span class="kw">fn</span> <span class="ident">writes</span><span class="op">&lt;</span><span class="ident">D</span>: <span class="ident">Component</span><span class="op">&gt;</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> { <span class="bool-val">false</span> }
 
-    <span class="kw">fn</span> <span class="ident">read_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> { <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>()] }
-
-    <span class="kw">fn</span> <span class="ident">write_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> { <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="number">0</span>) }
-
     <span class="kw">fn</span> <span class="ident">validate_access</span>(<span class="ident">access</span>: <span class="kw-2">&amp;</span><span class="ident">ComponentAccess</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="ident">access</span>.<span class="ident">allows_read</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>())
+    }
+
+    <span class="kw">fn</span> <span class="ident">requires_permissions</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> {
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">permissions</span> <span class="op">=</span> <span class="ident">Permissions</span>::<span class="ident">new</span>();
+        <span class="ident">permissions</span>.<span class="ident">push_read</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
+        <span class="ident">permissions</span>
     }
 }
 
@@ -2007,9 +1997,11 @@
 
     <span class="kw">fn</span> <span class="ident">writes</span><span class="op">&lt;</span><span class="ident">D</span>: <span class="ident">Component</span><span class="op">&gt;</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> { <span class="bool-val">false</span> }
 
-    <span class="kw">fn</span> <span class="ident">read_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> { <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>()] }
-
-    <span class="kw">fn</span> <span class="ident">write_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> { <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="number">0</span>) }
+    <span class="kw">fn</span> <span class="ident">requires_permissions</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> {
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">permissions</span> <span class="op">=</span> <span class="ident">Permissions</span>::<span class="ident">new</span>();
+        <span class="ident">permissions</span>.<span class="ident">push_read</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
+        <span class="ident">permissions</span>
+    }
 
     <span class="kw">fn</span> <span class="ident">validate_access</span>(<span class="ident">access</span>: <span class="kw-2">&amp;</span><span class="ident">ComponentAccess</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="ident">access</span>.<span class="ident">allows_read</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>())
@@ -2070,11 +2062,11 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">writes</span><span class="op">&lt;</span><span class="ident">D</span>: <span class="ident">Component</span><span class="op">&gt;</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> { <span class="ident">TypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">TypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>() }
 
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">read_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> { <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>()] }
-
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">write_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> { <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>()] }
+    <span class="kw">fn</span> <span class="ident">requires_permissions</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> {
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">permissions</span> <span class="op">=</span> <span class="ident">Permissions</span>::<span class="ident">new</span>();
+        <span class="ident">permissions</span>.<span class="ident">push</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
+        <span class="ident">permissions</span>
+    }
 
     <span class="kw">fn</span> <span class="ident">validate_access</span>(<span class="ident">access</span>: <span class="kw-2">&amp;</span><span class="ident">ComponentAccess</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="ident">access</span>.<span class="ident">allows_write</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>())
@@ -2129,11 +2121,11 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">writes</span><span class="op">&lt;</span><span class="ident">D</span>: <span class="ident">Component</span><span class="op">&gt;</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> { <span class="ident">TypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>() <span class="op">=</span><span class="op">=</span> <span class="ident">TypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">D</span><span class="op">&gt;</span>() }
 
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">read_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> { <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>()] }
-
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">write_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> { <span class="macro">vec</span><span class="macro">!</span>[<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>()] }
+    <span class="kw">fn</span> <span class="ident">requires_permissions</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> {
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">permissions</span> <span class="op">=</span> <span class="ident">Permissions</span>::<span class="ident">new</span>();
+        <span class="ident">permissions</span>.<span class="ident">push</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>());
+        <span class="ident">permissions</span>
+    }
 
     <span class="kw">fn</span> <span class="ident">validate_access</span>(<span class="ident">access</span>: <span class="kw-2">&amp;</span><span class="ident">ComponentAccess</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
         <span class="ident">access</span>.<span class="ident">allows_write</span>(<span class="ident">ComponentTypeId</span>::<span class="ident">of</span>::<span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span>())
@@ -2196,11 +2188,7 @@
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">writes</span><span class="op">&lt;</span><span class="ident">D</span>: <span class="ident">Component</span><span class="op">&gt;</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> { <span class="bool-val">false</span> }
 
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">read_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> { <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="number">0</span>) }
-
-    <span class="attribute">#[<span class="ident">inline</span>]</span>
-    <span class="kw">fn</span> <span class="ident">write_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> { <span class="ident">Vec</span>::<span class="ident">with_capacity</span>(<span class="number">0</span>) }
+    <span class="kw">fn</span> <span class="ident">requires_permissions</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> { <span class="ident">Permissions</span>::<span class="ident">new</span>() }
 
     <span class="attribute">#[<span class="ident">inline</span>]</span>
     <span class="kw">fn</span> <span class="ident">validate_access</span>(<span class="kw">_</span>: <span class="kw-2">&amp;</span><span class="ident">ComponentAccess</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> { <span class="bool-val">true</span> }
@@ -2274,16 +2262,10 @@
                 $( <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>::<span class="ident">writes</span>::<span class="op">&lt;</span><span class="ident">Data</span><span class="op">&gt;</span>() )<span class="op">|</span><span class="op">|</span><span class="op">*</span>
             }
 
-            <span class="kw">fn</span> <span class="ident">read_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> {
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
-                $( <span class="ident">vec</span>.<span class="ident">extend</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>::<span class="ident">read_types</span>()); )<span class="op">*</span>
-                <span class="ident">vec</span>
-            }
-
-            <span class="kw">fn</span> <span class="ident">write_types</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> {
-                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">vec</span> <span class="op">=</span> <span class="macro">vec</span><span class="macro">!</span>[];
-                $( <span class="ident">vec</span>.<span class="ident">extend</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>::<span class="ident">write_types</span>()); )<span class="op">*</span>
-                <span class="ident">vec</span>
+            <span class="kw">fn</span> <span class="ident">requires_permissions</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Permissions</span><span class="op">&lt;</span><span class="ident">ComponentTypeId</span><span class="op">&gt;</span> {
+                <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">permissions</span> <span class="op">=</span> <span class="ident">Permissions</span>::<span class="ident">new</span>();
+                $( <span class="ident">permissions</span>.<span class="ident">add</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">ty</span>::<span class="ident">requires_permissions</span>()); )<span class="op">*</span>
+                <span class="ident">permissions</span>
             }
         }
     };
