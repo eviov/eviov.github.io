@@ -2,16 +2,16 @@
 <p>Once an element is inserted into the <code>DelayQueue</code>, it is yielded once the
 specified deadline has been reached.</p>
 <h1 id="usage" class="section-header"><a href="#usage">Usage</a></h1>
-<p>Elements are inserted into <code>DelayQueue</code> using the <a href="#method.insert"><code>insert</code></a> or
-<a href="#method.insert_at"><code>insert_at</code></a> methods. A deadline is provided with the item and a <a href="../../../tokio/time/delay_queue/struct.Key.html"><code>Key</code></a> is
+<p>Elements are inserted into <code>DelayQueue</code> using the <a href="../../../tokio/time/delay_queue/struct.DelayQueue.html#method.insert"><code>insert</code></a> or
+<a href="../../../tokio/time/delay_queue/struct.DelayQueue.html#method.insert_at"><code>insert_at</code></a> methods. A deadline is provided with the item and a <a href="../../../tokio/time/delay_queue/struct.Key.html"><code>Key</code></a> is
 returned. The key is used to remove the entry or to change the deadline at
 which it should be yielded back.</p>
 <p>Once delays have been configured, the <code>DelayQueue</code> is used via its
-<a href="https://docs.rs/futures/0.1/futures/stream/trait.Stream.html"><code>Stream</code></a> implementation. <a href="#method.poll"><code>poll</code></a> is called. If an entry has reached its
+<a href="https://docs.rs/futures/0.1/futures/stream/trait.Stream.html"><code>Stream</code></a> implementation. <a href="../../../tokio/time/delay_queue/struct.DelayQueue.html#structfield.poll"><code>poll</code></a> is called. If an entry has reached its
 deadline, it is returned. If not, <code>Poll::Pending</code> indicating that the
 current task will be notified once the deadline has been reached.</p>
 <h1 id="stream-implementation" class="section-header"><a href="#stream-implementation"><code>Stream</code> implementation</a></h1>
-<p>Items are retrieved from the queue via <a href="#method.poll"><code>Stream::poll</code></a>. If no delays have
+<p>Items are retrieved from the queue via <a href="../../../tokio/time/delay_queue/struct.DelayQueue.html#structfield.poll"><code>Stream::poll</code></a>. If no delays have
 expired, no items are returned. In this case, <code>NotReady</code> is returned and the
 current task is registered to be notified once the next item's delay has
 expired.</p>
@@ -27,10 +27,10 @@ rounded to the closest millisecond.</p>
 <p>The <a href="../../../tokio/time/delay_queue/struct.DelayQueue.html"><code>DelayQueue</code></a> is backed by a separate instance of the same timer wheel used internally by
 Tokio's standalone timer utilities such as <a href="../../../tokio/time/fn.delay_for.html"><code>delay_for</code></a>. Because of this, it offers the same
 performance and scalability benefits.</p>
-<p>State associated with each entry is stored in a <a href="https://docs.rs/slab"><code>slab</code></a>. This amortizes the cost of allocation,
+<p>State associated with each entry is stored in a <a href="../../../slab/index.html"><code>slab</code></a>. This amortizes the cost of allocation,
 and allows reuse of the memory allocated for expired entires.</p>
-<p>Capacity can be checked using <a href="#method.capacity"><code>capacity</code></a> and allocated preemptively by using
-the <a href="#method.reserve"><code>reserve</code></a> method.</p>
+<p>Capacity can be checked using <a href="../../../tokio/time/delay_queue/struct.DelayQueue.html#method.capacity"><code>capacity</code></a> and allocated preemptively by using
+the <a href="../../../tokio/time/delay_queue/struct.DelayQueue.html#method.reserve"><code>reserve</code></a> method.</p>
 <h1 id="usage-1" class="section-header"><a href="#usage-1">Usage</a></h1>
 <p>Using <code>DelayQueue</code> to manage cache entries.</p>
 
@@ -103,12 +103,12 @@ time.</p>
 <p>This function is identical to <code>insert</code>, but takes an <code>Instant</code> instead
 of a <code>Duration</code>.</p>
 <p><code>value</code> is stored in the queue until <code>when</code> is reached. At which point,
-<code>value</code> will be returned from <a href="#method.poll"><code>poll</code></a>. If <code>when</code> has already been
+<code>value</code> will be returned from <a href="method@Self::poll"><code>poll</code></a>. If <code>when</code> has already been
 reached, then <code>value</code> is immediately made available to poll.</p>
 <p>The return value represents the insertion and is used at an argument to
-<a href="#method.remove"><code>remove</code></a> and <a href="#method.reset"><code>reset</code></a>. Note that <a href="../../../tokio/time/delay_queue/struct.Key.html"><code>Key</code></a> is token and is reused once
-<code>value</code> is removed from the queue either by calling <a href="#method.poll"><code>poll</code></a> after
-<code>when</code> is reached or by calling <a href="#method.remove"><code>remove</code></a>. At this point, the caller
+<a href="method@Self::remove"><code>remove</code></a> and <a href="method@Self::reset"><code>reset</code></a>. Note that <a href="../../../tokio/time/delay_queue/struct.Key.html"><code>Key</code></a> is token and is reused once
+<code>value</code> is removed from the queue either by calling <a href="method@Self::poll"><code>poll</code></a> after
+<code>when</code> is reached or by calling <a href="method@Self::remove"><code>remove</code></a>. At this point, the caller
 must take care to not use the returned <a href="../../../tokio/time/delay_queue/struct.Key.html"><code>Key</code></a> again as it may reference
 a different item in the queue.</p>
 <p>See <a href="#">type</a> level documentation for more details.</p>
@@ -135,12 +135,12 @@ elapses.</p>
 <p>This function is identical to <code>insert_at</code>, but takes a <code>Duration</code>
 instead of an <code>Instant</code>.</p>
 <p><code>value</code> is stored in the queue until <code>when</code> is reached. At which point,
-<code>value</code> will be returned from <a href="#method.poll"><code>poll</code></a>. If <code>when</code> has already been
+<code>value</code> will be returned from <a href="method@Self::poll"><code>poll</code></a>. If <code>when</code> has already been
 reached, then <code>value</code> is immediately made available to poll.</p>
 <p>The return value represents the insertion and is used at an argument to
-<a href="#method.remove"><code>remove</code></a> and <a href="#method.reset"><code>reset</code></a>. Note that <a href="../../../tokio/time/delay_queue/struct.Key.html"><code>Key</code></a> is token and is reused once
-<code>value</code> is removed from the queue either by calling <a href="#method.poll"><code>poll</code></a> after
-<code>when</code> is reached or by calling <a href="#method.remove"><code>remove</code></a>. At this point, the caller
+<a href="method@Self::remove"><code>remove</code></a> and <a href="method@Self::reset"><code>reset</code></a>. Note that <a href="../../../tokio/time/delay_queue/struct.Key.html"><code>Key</code></a> is token and is reused once
+<code>value</code> is removed from the queue either by calling <a href="method@Self::poll"><code>poll</code></a> after
+<code>when</code> is reached or by calling <a href="method@Self::remove"><code>remove</code></a>. At this point, the caller
 must take care to not use the returned <a href="../../../tokio/time/delay_queue/struct.Key.html"><code>Key</code></a> again as it may reference
 a different item in the queue.</p>
 <p>See <a href="#">type</a> level documentation for more details.</p>
@@ -228,7 +228,7 @@ duration or if <code>key</code> is not contained by the queue.</p>
 
     <span class="comment">// &quot;foo&quot;is now scheduled to be returned in 10 seconds</span></pre></div>
 </div><h4 id='method.clear' class="method"><code id='clear.v'>pub fn <a href='#method.clear' class='fnname'>clear</a>(&amp;mut self)</code><a class='srclink' href='../../../src/tokio/time/delay_queue.rs.html#598-603' title='goto source code'>[src]</a></h4><div class='docblock'><p>Clears the queue, removing all items.</p>
-<p>After calling <code>clear</code>, <a href="#method.poll"><code>poll</code></a> will return <code>Ok(Ready(None))</code>.</p>
+<p>After calling <code>clear</code>, <a href="method@Self::poll"><code>poll</code></a> will return <code>Ok(Ready(None))</code>.</p>
 <p>Note that this method has no effect on the allocated capacity.</p>
 <h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>
 <div class="example-wrap"><pre class="rust rust-example-rendered">
