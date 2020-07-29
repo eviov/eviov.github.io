@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/num-derive-0.3.0/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../num_derive/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/num-derive-0.3.1/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../num_derive/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -767,6 +767,95 @@
 <span id="767">767</span>
 <span id="768">768</span>
 <span id="769">769</span>
+<span id="770">770</span>
+<span id="771">771</span>
+<span id="772">772</span>
+<span id="773">773</span>
+<span id="774">774</span>
+<span id="775">775</span>
+<span id="776">776</span>
+<span id="777">777</span>
+<span id="778">778</span>
+<span id="779">779</span>
+<span id="780">780</span>
+<span id="781">781</span>
+<span id="782">782</span>
+<span id="783">783</span>
+<span id="784">784</span>
+<span id="785">785</span>
+<span id="786">786</span>
+<span id="787">787</span>
+<span id="788">788</span>
+<span id="789">789</span>
+<span id="790">790</span>
+<span id="791">791</span>
+<span id="792">792</span>
+<span id="793">793</span>
+<span id="794">794</span>
+<span id="795">795</span>
+<span id="796">796</span>
+<span id="797">797</span>
+<span id="798">798</span>
+<span id="799">799</span>
+<span id="800">800</span>
+<span id="801">801</span>
+<span id="802">802</span>
+<span id="803">803</span>
+<span id="804">804</span>
+<span id="805">805</span>
+<span id="806">806</span>
+<span id="807">807</span>
+<span id="808">808</span>
+<span id="809">809</span>
+<span id="810">810</span>
+<span id="811">811</span>
+<span id="812">812</span>
+<span id="813">813</span>
+<span id="814">814</span>
+<span id="815">815</span>
+<span id="816">816</span>
+<span id="817">817</span>
+<span id="818">818</span>
+<span id="819">819</span>
+<span id="820">820</span>
+<span id="821">821</span>
+<span id="822">822</span>
+<span id="823">823</span>
+<span id="824">824</span>
+<span id="825">825</span>
+<span id="826">826</span>
+<span id="827">827</span>
+<span id="828">828</span>
+<span id="829">829</span>
+<span id="830">830</span>
+<span id="831">831</span>
+<span id="832">832</span>
+<span id="833">833</span>
+<span id="834">834</span>
+<span id="835">835</span>
+<span id="836">836</span>
+<span id="837">837</span>
+<span id="838">838</span>
+<span id="839">839</span>
+<span id="840">840</span>
+<span id="841">841</span>
+<span id="842">842</span>
+<span id="843">843</span>
+<span id="844">844</span>
+<span id="845">845</span>
+<span id="846">846</span>
+<span id="847">847</span>
+<span id="848">848</span>
+<span id="849">849</span>
+<span id="850">850</span>
+<span id="851">851</span>
+<span id="852">852</span>
+<span id="853">853</span>
+<span id="854">854</span>
+<span id="855">855</span>
+<span id="856">856</span>
+<span id="857">857</span>
+<span id="858">858</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright 2012-2015 The Rust Project Developers. See the COPYRIGHT</span>
 <span class="comment">// file at the top-level directory of this distribution and at</span>
@@ -808,13 +897,57 @@
 <span class="doccomment">//! }</span>
 <span class="doccomment">//! # fn main() {}</span>
 <span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ## Explicit import</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! By default the `num_derive` procedural macros assume that the</span>
+<span class="doccomment">//! `num_traits` crate is a direct dependency. If `num_traits` is instead</span>
+<span class="doccomment">//! a transitive dependency, the `num_traits` helper attribute can be</span>
+<span class="doccomment">//! used to tell `num_derive` to use a specific identifier for its imports.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```rust</span>
+<span class="doccomment">//! #[macro_use]</span>
+<span class="doccomment">//! extern crate num_derive;</span>
+<span class="doccomment">//! // Lets pretend this is a transitive dependency from another crate</span>
+<span class="doccomment">//! // reexported as `some_other_ident`.</span>
+<span class="doccomment">//! extern crate num_traits as some_other_ident;</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! #[derive(FromPrimitive, ToPrimitive)]</span>
+<span class="doccomment">//! #[num_traits = &quot;some_other_ident&quot;]</span>
+<span class="doccomment">//! enum Color {</span>
+<span class="doccomment">//!     Red,</span>
+<span class="doccomment">//!     Blue,</span>
+<span class="doccomment">//!     Green,</span>
+<span class="doccomment">//! }</span>
+<span class="doccomment">//! # fn main() {}</span>
+<span class="doccomment">//! ```</span>
 
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">proc_macro</span>;
 
 <span class="kw">use</span> <span class="ident">proc_macro</span>::<span class="ident">TokenStream</span>;
-<span class="kw">use</span> <span class="ident">proc_macro2</span>::<span class="ident">Span</span>;
+<span class="kw">use</span> <span class="ident">proc_macro2</span>::{<span class="ident">Span</span>, <span class="ident">TokenStream</span> <span class="kw">as</span> <span class="ident">TokenStream2</span>};
 <span class="kw">use</span> <span class="ident">quote</span>::<span class="ident">quote</span>;
 <span class="kw">use</span> <span class="ident">syn</span>::{<span class="ident">Data</span>, <span class="ident">Fields</span>, <span class="ident">Ident</span>};
+
+<span class="doccomment">/// Try to parse the tokens, or else return a compilation error</span>
+<span class="doccomment">/// suggesting &quot;full-syntax&quot; if that&#39;s not already enabled.</span>
+<span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">parse</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>:<span class="ident">ident</span> <span class="kw">as</span> <span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ty</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        <span class="kw">match</span> <span class="ident">syn</span>::<span class="ident">parse</span>::<span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">tokens</span>) {
+            <span class="prelude-val">Ok</span>(<span class="ident">parsed</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">parsed</span>,
+            <span class="prelude-val">Err</span>(<span class="kw-2">mut</span> <span class="ident">error</span>) <span class="op">=</span><span class="op">&gt;</span> {
+                <span class="kw">if</span> <span class="macro">cfg</span><span class="macro">!</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;full-syntax&quot;</span>)) {
+                    <span class="kw">let</span> <span class="ident">hint</span> <span class="op">=</span> <span class="ident">syn</span>::<span class="ident">Error</span>::<span class="ident">new</span>(
+                        <span class="ident">Span</span>::<span class="ident">call_site</span>(),
+                        <span class="string">r#&quot;this might need the &quot;full-syntax&quot; feature of `num-derive`&quot;#</span>,
+                    );
+                    <span class="ident">error</span>.<span class="ident">combine</span>(<span class="ident">hint</span>);
+                }
+                <span class="kw">return</span> <span class="ident">TokenStream</span>::<span class="ident">from</span>(<span class="ident">error</span>.<span class="ident">to_compile_error</span>());
+            }
+        }
+    };
+}
 
 <span class="comment">// Within `exp`, you can bring things into scope with `extern crate`.</span>
 <span class="comment">//</span>
@@ -833,11 +966,7 @@
 <span class="comment">//</span>
 <span class="comment">// Solution: use the dummy const trick.  For some reason, `extern crate` statements are allowed</span>
 <span class="comment">// here, but everything from the surrounding module is in scope.  This trick is taken from serde.</span>
-<span class="kw">fn</span> <span class="ident">dummy_const_trick</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">quote</span>::<span class="ident">ToTokens</span><span class="op">&gt;</span>(
-    <span class="ident">trait_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
-    <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">proc_macro2</span>::<span class="ident">Ident</span>,
-    <span class="ident">exp</span>: <span class="ident">T</span>,
-) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">proc_macro2</span>::<span class="ident">TokenStream</span> {
+<span class="kw">fn</span> <span class="ident">dummy_const_trick</span>(<span class="ident">trait_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">Ident</span>, <span class="ident">exp</span>: <span class="ident">TokenStream2</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream2</span> {
     <span class="kw">let</span> <span class="ident">dummy_const</span> <span class="op">=</span> <span class="ident">Ident</span>::<span class="ident">new</span>(
         <span class="kw-2">&amp;</span><span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;_IMPL_NUM_{}_FOR_{}&quot;</span>, <span class="ident">trait_</span>, <span class="ident">unraw</span>(<span class="ident">name</span>)),
         <span class="ident">Span</span>::<span class="ident">call_site</span>(),
@@ -853,7 +982,7 @@
     }
 }
 
-<span class="kw">fn</span> <span class="ident">unraw</span>(<span class="ident">ident</span>: <span class="kw-2">&amp;</span><span class="ident">proc_macro2</span>::<span class="ident">Ident</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
+<span class="kw">fn</span> <span class="ident">unraw</span>(<span class="ident">ident</span>: <span class="kw-2">&amp;</span><span class="ident">Ident</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">String</span> {
     <span class="ident">ident</span>.<span class="ident">to_string</span>().<span class="ident">trim_start_matches</span>(<span class="string">&quot;r#&quot;</span>).<span class="ident">to_owned</span>()
 }
 
@@ -880,6 +1009,53 @@
             }
         }
         <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
+    }
+}
+
+<span class="kw">struct</span> <span class="ident">NumTraits</span> {
+    <span class="ident">import</span>: <span class="ident">Ident</span>,
+    <span class="ident">explicit</span>: <span class="ident">bool</span>,
+}
+
+<span class="kw">impl</span> <span class="ident">quote</span>::<span class="ident">ToTokens</span> <span class="kw">for</span> <span class="ident">NumTraits</span> {
+    <span class="kw">fn</span> <span class="ident">to_tokens</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">tokens</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">TokenStream2</span>) {
+        <span class="self">self</span>.<span class="ident">import</span>.<span class="ident">to_tokens</span>(<span class="ident">tokens</span>);
+    }
+}
+
+<span class="kw">impl</span> <span class="ident">NumTraits</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">ast</span>: <span class="kw-2">&amp;</span><span class="ident">syn</span>::<span class="ident">DeriveInput</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+        <span class="comment">// If there is a `num_traits` MetaNameValue attribute on the input,</span>
+        <span class="comment">// retrieve its value, and use it to create an `Ident` to be used</span>
+        <span class="comment">// to import the `num_traits` crate.</span>
+        <span class="kw">for</span> <span class="ident">attr</span> <span class="kw">in</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">attrs</span> {
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Ok</span>(<span class="ident">syn</span>::<span class="ident">Meta</span>::<span class="ident">NameValue</span>(<span class="ident">mnv</span>)) <span class="op">=</span> <span class="ident">attr</span>.<span class="ident">parse_meta</span>() {
+                <span class="kw">if</span> <span class="ident">mnv</span>.<span class="ident">path</span>.<span class="ident">is_ident</span>(<span class="string">&quot;num_traits&quot;</span>) {
+                    <span class="kw">if</span> <span class="kw">let</span> <span class="ident">syn</span>::<span class="ident">Lit</span>::<span class="ident">Str</span>(<span class="ident">lit_str</span>) <span class="op">=</span> <span class="ident">mnv</span>.<span class="ident">lit</span> {
+                        <span class="kw">return</span> <span class="ident">NumTraits</span> {
+                            <span class="ident">import</span>: <span class="ident">syn</span>::<span class="ident">Ident</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">lit_str</span>.<span class="ident">value</span>(), <span class="ident">lit_str</span>.<span class="ident">span</span>()),
+                            <span class="ident">explicit</span>: <span class="bool-val">true</span>,
+                        };
+                    } <span class="kw">else</span> {
+                        <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;#[num_traits] attribute value must be a str&quot;</span>);
+                    }
+                }
+            }
+        }
+
+        <span class="comment">// Otherwise, we&#39;ll implicitly import our own.</span>
+        <span class="ident">NumTraits</span> {
+            <span class="ident">import</span>: <span class="ident">Ident</span>::<span class="ident">new</span>(<span class="string">&quot;_num_traits&quot;</span>, <span class="ident">Span</span>::<span class="ident">call_site</span>()),
+            <span class="ident">explicit</span>: <span class="bool-val">false</span>,
+        }
+    }
+
+    <span class="kw">fn</span> <span class="ident">wrap</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">trait_</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">Ident</span>, <span class="ident">output</span>: <span class="ident">TokenStream2</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream2</span> {
+        <span class="kw">if</span> <span class="self">self</span>.<span class="ident">explicit</span> {
+            <span class="ident">output</span>
+        } <span class="kw">else</span> {
+            <span class="ident">dummy_const_trick</span>(<span class="ident">trait_</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>, <span class="ident">output</span>)
+        }
     }
 }
 
@@ -931,55 +1107,57 @@
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// # fn main() {}</span>
 <span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">FromPrimitive</span>)]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">FromPrimitive</span>, <span class="ident">attributes</span>(<span class="ident">num_traits</span>))]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_primitive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">ast</span>: <span class="ident">syn</span>::<span class="ident">DeriveInput</span> <span class="op">=</span> <span class="ident">syn</span>::<span class="ident">parse</span>(<span class="ident">input</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">ast</span> <span class="op">=</span> <span class="macro">parse</span><span class="macro">!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">syn</span>::<span class="ident">DeriveInput</span>);
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">ident</span>;
+
+    <span class="kw">let</span> <span class="ident">import</span> <span class="op">=</span> <span class="ident">NumTraits</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>);
 
     <span class="kw">let</span> <span class="ident">impl_</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">inner_ty</span>) <span class="op">=</span> <span class="ident">newtype_inner</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>) {
         <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">impl</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span> <span class="kw">for</span> #<span class="ident">name</span> {
                 <span class="kw">fn</span> <span class="ident">from_i64</span>(<span class="ident">n</span>: <span class="ident">i64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_i64</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_i64</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_u64</span>(<span class="ident">n</span>: <span class="ident">u64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_u64</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_u64</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_isize</span>(<span class="ident">n</span>: <span class="ident">isize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_isize</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_isize</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_i8</span>(<span class="ident">n</span>: <span class="ident">i8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_i8</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_i8</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_i16</span>(<span class="ident">n</span>: <span class="ident">i16</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_i16</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_i16</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_i32</span>(<span class="ident">n</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_i32</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_i32</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_i128</span>(<span class="ident">n</span>: <span class="ident">i128</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_i128</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_i128</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_usize</span>(<span class="ident">n</span>: <span class="ident">usize</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_usize</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_usize</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_u8</span>(<span class="ident">n</span>: <span class="ident">u8</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_u8</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_u8</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_u16</span>(<span class="ident">n</span>: <span class="ident">u16</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_u16</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_u16</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_u32</span>(<span class="ident">n</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_u32</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_u32</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_u128</span>(<span class="ident">n</span>: <span class="ident">u128</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_u128</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_u128</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_f32</span>(<span class="ident">n</span>: <span class="ident">f32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_f32</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_f32</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">from_f64</span>(<span class="ident">n</span>: <span class="ident">f64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_f64</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span><span class="op">&gt;</span>::<span class="ident">from_f64</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
                 }
             }
         }
@@ -1021,7 +1199,7 @@
         };
 
         <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span> <span class="ident">_num_traits</span>::<span class="ident">FromPrimitive</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">impl</span> #<span class="ident">import</span>::<span class="ident">FromPrimitive</span> <span class="kw">for</span> #<span class="ident">name</span> {
                 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
                 <span class="kw">fn</span> <span class="ident">from_i64</span>(#<span class="ident">from_i64_var</span>: <span class="ident">i64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                     #(#<span class="ident">clauses</span> <span class="kw">else</span>)<span class="op">*</span> {
@@ -1036,7 +1214,7 @@
         }
     };
 
-    <span class="ident">dummy_const_trick</span>(<span class="string">&quot;FromPrimitive&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>, <span class="ident">impl_</span>).<span class="ident">into</span>()
+    <span class="ident">import</span>.<span class="ident">wrap</span>(<span class="string">&quot;FromPrimitive&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>, <span class="ident">impl_</span>).<span class="ident">into</span>()
 }
 
 <span class="doccomment">/// Derives [`num_traits::ToPrimitive`][to] for simple enums and newtypes.</span>
@@ -1087,55 +1265,57 @@
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// # fn main() {}</span>
 <span class="doccomment">/// ```</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">ToPrimitive</span>)]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">ToPrimitive</span>, <span class="ident">attributes</span>(<span class="ident">num_traits</span>))]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">to_primitive</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">ast</span>: <span class="ident">syn</span>::<span class="ident">DeriveInput</span> <span class="op">=</span> <span class="ident">syn</span>::<span class="ident">parse</span>(<span class="ident">input</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">ast</span> <span class="op">=</span> <span class="macro">parse</span><span class="macro">!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">syn</span>::<span class="ident">DeriveInput</span>);
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">ident</span>;
+
+    <span class="kw">let</span> <span class="ident">import</span> <span class="op">=</span> <span class="ident">NumTraits</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>);
 
     <span class="kw">let</span> <span class="ident">impl_</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">inner_ty</span>) <span class="op">=</span> <span class="ident">newtype_inner</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>) {
         <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">impl</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span> <span class="kw">for</span> #<span class="ident">name</span> {
                 <span class="kw">fn</span> <span class="ident">to_i64</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">i64</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_i64</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_i64</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_u64</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u64</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_u64</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_u64</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_isize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">isize</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_isize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_isize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_i8</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">i8</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_i8</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_i8</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_i16</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">i16</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_i16</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_i16</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_i32</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_i32</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_i32</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_i128</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">i128</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_i128</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_i128</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_usize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">usize</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_usize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_usize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_u8</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_u8</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_u8</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_u16</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_u16</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_u16</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_u32</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_u32</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_u32</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_u128</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">u128</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_u128</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_u128</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_f32</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_f32</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_f32</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
                 <span class="kw">fn</span> <span class="ident">to_f64</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">f64</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_f64</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>::<span class="ident">to_f64</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
                 }
             }
         }
@@ -1180,7 +1360,7 @@
         };
 
         <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span> <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">impl</span> #<span class="ident">import</span>::<span class="ident">ToPrimitive</span> <span class="kw">for</span> #<span class="ident">name</span> {
                 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">trivial_numeric_casts</span>)]</span>
                 <span class="kw">fn</span> <span class="ident">to_i64</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">i64</span><span class="op">&gt;</span> {
                     #<span class="ident">match_expr</span>
@@ -1193,7 +1373,7 @@
         }
     };
 
-    <span class="ident">dummy_const_trick</span>(<span class="string">&quot;ToPrimitive&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>, <span class="ident">impl_</span>).<span class="ident">into</span>()
+    <span class="ident">import</span>.<span class="ident">wrap</span>(<span class="string">&quot;ToPrimitive&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>, <span class="ident">impl_</span>).<span class="ident">into</span>()
 }
 
 <span class="kw">const</span> <span class="ident">NEWTYPE_ONLY</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;This trait can only be derived for newtypes&quot;</span>;
@@ -1208,334 +1388,332 @@
 <span class="doccomment">/// `Output=Self`.</span>
 <span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">NumOps</span>)]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_ops</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">ast</span>: <span class="ident">syn</span>::<span class="ident">DeriveInput</span> <span class="op">=</span> <span class="ident">syn</span>::<span class="ident">parse</span>(<span class="ident">input</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">ast</span> <span class="op">=</span> <span class="macro">parse</span><span class="macro">!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">syn</span>::<span class="ident">DeriveInput</span>);
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">ident</span>;
     <span class="kw">let</span> <span class="ident">inner_ty</span> <span class="op">=</span> <span class="ident">newtype_inner</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>).<span class="ident">expect</span>(<span class="ident">NEWTYPE_ONLY</span>);
-    <span class="ident">dummy_const_trick</span>(
-        <span class="string">&quot;NumOps&quot;</span>,
-        <span class="kw-2">&amp;</span><span class="ident">name</span>,
-        <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Add</span> <span class="kw">for</span> #<span class="ident">name</span> {
-                <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
-                <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Add</span><span class="op">&gt;</span>::<span class="ident">add</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
-                }
+    <span class="kw">let</span> <span class="ident">impl_</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
+        <span class="kw">impl</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Add</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
+            <span class="kw">fn</span> <span class="ident">add</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Add</span><span class="op">&gt;</span>::<span class="ident">add</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
             }
-            <span class="kw">impl</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Sub</span> <span class="kw">for</span> #<span class="ident">name</span> {
-                <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
-                <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Sub</span><span class="op">&gt;</span>::<span class="ident">sub</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
-                }
+        }
+        <span class="kw">impl</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Sub</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
+            <span class="kw">fn</span> <span class="ident">sub</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Sub</span><span class="op">&gt;</span>::<span class="ident">sub</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
             }
-            <span class="kw">impl</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Mul</span> <span class="kw">for</span> #<span class="ident">name</span> {
-                <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
-                <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Mul</span><span class="op">&gt;</span>::<span class="ident">mul</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
-                }
+        }
+        <span class="kw">impl</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Mul</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
+            <span class="kw">fn</span> <span class="ident">mul</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Mul</span><span class="op">&gt;</span>::<span class="ident">mul</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
             }
-            <span class="kw">impl</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Div</span> <span class="kw">for</span> #<span class="ident">name</span> {
-                <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
-                <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Div</span><span class="op">&gt;</span>::<span class="ident">div</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
-                }
+        }
+        <span class="kw">impl</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Div</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
+            <span class="kw">fn</span> <span class="ident">div</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Div</span><span class="op">&gt;</span>::<span class="ident">div</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
             }
-            <span class="kw">impl</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Rem</span> <span class="kw">for</span> #<span class="ident">name</span> {
-                <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
-                <span class="kw">fn</span> <span class="ident">rem</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Rem</span><span class="op">&gt;</span>::<span class="ident">rem</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
-                }
+        }
+        <span class="kw">impl</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Rem</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">type</span> <span class="ident">Output</span> <span class="op">=</span> <span class="self">Self</span>;
+            <span class="kw">fn</span> <span class="ident">rem</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Rem</span><span class="op">&gt;</span>::<span class="ident">rem</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
             }
-        },
-    )
-    .<span class="ident">into</span>()
+        }
+    };
+    <span class="ident">impl_</span>.<span class="ident">into</span>()
 }
 
 <span class="doccomment">/// Derives [`num_traits::NumCast`][num_cast] for newtypes.  The inner type must already implement</span>
 <span class="doccomment">/// `NumCast`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [num_cast]: https://docs.rs/num-traits/0.2/num_traits/cast/trait.NumCast.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">NumCast</span>)]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">NumCast</span>, <span class="ident">attributes</span>(<span class="ident">num_traits</span>))]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num_cast</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">ast</span>: <span class="ident">syn</span>::<span class="ident">DeriveInput</span> <span class="op">=</span> <span class="ident">syn</span>::<span class="ident">parse</span>(<span class="ident">input</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">ast</span> <span class="op">=</span> <span class="macro">parse</span><span class="macro">!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">syn</span>::<span class="ident">DeriveInput</span>);
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">ident</span>;
     <span class="kw">let</span> <span class="ident">inner_ty</span> <span class="op">=</span> <span class="ident">newtype_inner</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>).<span class="ident">expect</span>(<span class="ident">NEWTYPE_ONLY</span>);
-    <span class="ident">dummy_const_trick</span>(
-        <span class="string">&quot;NumCast&quot;</span>,
-        <span class="kw-2">&amp;</span><span class="ident">name</span>,
-        <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span> <span class="ident">_num_traits</span>::<span class="ident">NumCast</span> <span class="kw">for</span> #<span class="ident">name</span> {
-                <span class="kw">fn</span> <span class="ident">from</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">_num_traits</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>(<span class="ident">n</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">NumCast</span><span class="op">&gt;</span>::<span class="ident">from</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
-                }
+
+    <span class="kw">let</span> <span class="ident">import</span> <span class="op">=</span> <span class="ident">NumTraits</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>);
+
+    <span class="kw">let</span> <span class="ident">impl_</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
+        <span class="kw">impl</span> #<span class="ident">import</span>::<span class="ident">NumCast</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">fn</span> <span class="ident">from</span><span class="op">&lt;</span><span class="ident">T</span>: #<span class="ident">import</span>::<span class="ident">ToPrimitive</span><span class="op">&gt;</span>(<span class="ident">n</span>: <span class="ident">T</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">NumCast</span><span class="op">&gt;</span>::<span class="ident">from</span>(<span class="ident">n</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
             }
-        },
-    )
-    .<span class="ident">into</span>()
+        }
+    };
+
+    <span class="ident">import</span>.<span class="ident">wrap</span>(<span class="string">&quot;NumCast&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>, <span class="ident">impl_</span>).<span class="ident">into</span>()
 }
 
 <span class="doccomment">/// Derives [`num_traits::Zero`][zero] for newtypes.  The inner type must already implement `Zero`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [zero]: https://docs.rs/num-traits/0.2/num_traits/identities/trait.Zero.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Zero</span>)]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Zero</span>, <span class="ident">attributes</span>(<span class="ident">num_traits</span>))]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">zero</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">ast</span>: <span class="ident">syn</span>::<span class="ident">DeriveInput</span> <span class="op">=</span> <span class="ident">syn</span>::<span class="ident">parse</span>(<span class="ident">input</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">ast</span> <span class="op">=</span> <span class="macro">parse</span><span class="macro">!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">syn</span>::<span class="ident">DeriveInput</span>);
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">ident</span>;
     <span class="kw">let</span> <span class="ident">inner_ty</span> <span class="op">=</span> <span class="ident">newtype_inner</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>).<span class="ident">expect</span>(<span class="ident">NEWTYPE_ONLY</span>);
-    <span class="ident">dummy_const_trick</span>(
-        <span class="string">&quot;Zero&quot;</span>,
-        <span class="kw-2">&amp;</span><span class="ident">name</span>,
-        <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span> <span class="ident">_num_traits</span>::<span class="ident">Zero</span> <span class="kw">for</span> #<span class="ident">name</span> {
-                <span class="kw">fn</span> <span class="ident">zero</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Zero</span><span class="op">&gt;</span>::<span class="ident">zero</span>())
-                }
-                <span class="kw">fn</span> <span class="ident">is_zero</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Zero</span><span class="op">&gt;</span>::<span class="ident">is_zero</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
-                }
+
+    <span class="kw">let</span> <span class="ident">import</span> <span class="op">=</span> <span class="ident">NumTraits</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>);
+
+    <span class="kw">let</span> <span class="ident">impl_</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
+        <span class="kw">impl</span> #<span class="ident">import</span>::<span class="ident">Zero</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">fn</span> <span class="ident">zero</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Zero</span><span class="op">&gt;</span>::<span class="ident">zero</span>())
             }
-        },
-    )
-    .<span class="ident">into</span>()
+            <span class="kw">fn</span> <span class="ident">is_zero</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Zero</span><span class="op">&gt;</span>::<span class="ident">is_zero</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+            }
+        }
+    };
+
+    <span class="ident">import</span>.<span class="ident">wrap</span>(<span class="string">&quot;Zero&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>, <span class="ident">impl_</span>).<span class="ident">into</span>()
 }
 
 <span class="doccomment">/// Derives [`num_traits::One`][one] for newtypes.  The inner type must already implement `One`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [one]: https://docs.rs/num-traits/0.2/num_traits/identities/trait.One.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">One</span>)]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">One</span>, <span class="ident">attributes</span>(<span class="ident">num_traits</span>))]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">one</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">ast</span>: <span class="ident">syn</span>::<span class="ident">DeriveInput</span> <span class="op">=</span> <span class="ident">syn</span>::<span class="ident">parse</span>(<span class="ident">input</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">ast</span> <span class="op">=</span> <span class="macro">parse</span><span class="macro">!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">syn</span>::<span class="ident">DeriveInput</span>);
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">ident</span>;
     <span class="kw">let</span> <span class="ident">inner_ty</span> <span class="op">=</span> <span class="ident">newtype_inner</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>).<span class="ident">expect</span>(<span class="ident">NEWTYPE_ONLY</span>);
-    <span class="ident">dummy_const_trick</span>(
-        <span class="string">&quot;One&quot;</span>,
-        <span class="kw-2">&amp;</span><span class="ident">name</span>,
-        <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span> <span class="ident">_num_traits</span>::<span class="ident">One</span> <span class="kw">for</span> #<span class="ident">name</span> {
-                <span class="kw">fn</span> <span class="ident">one</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">One</span><span class="op">&gt;</span>::<span class="ident">one</span>())
-                }
-                <span class="kw">fn</span> <span class="ident">is_one</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">One</span><span class="op">&gt;</span>::<span class="ident">is_one</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
-                }
+
+    <span class="kw">let</span> <span class="ident">import</span> <span class="op">=</span> <span class="ident">NumTraits</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>);
+
+    <span class="kw">let</span> <span class="ident">impl_</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
+        <span class="kw">impl</span> #<span class="ident">import</span>::<span class="ident">One</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">fn</span> <span class="ident">one</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">One</span><span class="op">&gt;</span>::<span class="ident">one</span>())
             }
-        },
-    )
-    .<span class="ident">into</span>()
+            <span class="kw">fn</span> <span class="ident">is_one</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">One</span><span class="op">&gt;</span>::<span class="ident">is_one</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>)
+            }
+        }
+    };
+
+    <span class="ident">import</span>.<span class="ident">wrap</span>(<span class="string">&quot;One&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>, <span class="ident">impl_</span>).<span class="ident">into</span>()
 }
 
 <span class="doccomment">/// Derives [`num_traits::Num`][num] for newtypes.  The inner type must already implement `Num`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [num]: https://docs.rs/num-traits/0.2/num_traits/trait.Num.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Num</span>)]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Num</span>, <span class="ident">attributes</span>(<span class="ident">num_traits</span>))]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">num</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">ast</span>: <span class="ident">syn</span>::<span class="ident">DeriveInput</span> <span class="op">=</span> <span class="ident">syn</span>::<span class="ident">parse</span>(<span class="ident">input</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">ast</span> <span class="op">=</span> <span class="macro">parse</span><span class="macro">!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">syn</span>::<span class="ident">DeriveInput</span>);
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">ident</span>;
     <span class="kw">let</span> <span class="ident">inner_ty</span> <span class="op">=</span> <span class="ident">newtype_inner</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>).<span class="ident">expect</span>(<span class="ident">NEWTYPE_ONLY</span>);
-    <span class="ident">dummy_const_trick</span>(
-        <span class="string">&quot;Num&quot;</span>,
-        <span class="kw-2">&amp;</span><span class="ident">name</span>,
-        <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span> <span class="ident">_num_traits</span>::<span class="ident">Num</span> <span class="kw">for</span> #<span class="ident">name</span> {
-                <span class="kw">type</span> <span class="ident">FromStrRadixErr</span> <span class="op">=</span> <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Num</span><span class="op">&gt;</span>::<span class="ident">FromStrRadixErr</span>;
-                <span class="kw">fn</span> <span class="ident">from_str_radix</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">radix</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="self">Self</span>::<span class="ident">FromStrRadixErr</span><span class="op">&gt;</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Num</span><span class="op">&gt;</span>::<span class="ident">from_str_radix</span>(<span class="ident">s</span>, <span class="ident">radix</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
-                }
+
+    <span class="kw">let</span> <span class="ident">import</span> <span class="op">=</span> <span class="ident">NumTraits</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>);
+
+    <span class="kw">let</span> <span class="ident">impl_</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
+        <span class="kw">impl</span> #<span class="ident">import</span>::<span class="ident">Num</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">type</span> <span class="ident">FromStrRadixErr</span> <span class="op">=</span> <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Num</span><span class="op">&gt;</span>::<span class="ident">FromStrRadixErr</span>;
+            <span class="kw">fn</span> <span class="ident">from_str_radix</span>(<span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">radix</span>: <span class="ident">u32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="self">Self</span>::<span class="ident">FromStrRadixErr</span><span class="op">&gt;</span> {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Num</span><span class="op">&gt;</span>::<span class="ident">from_str_radix</span>(<span class="ident">s</span>, <span class="ident">radix</span>).<span class="ident">map</span>(#<span class="ident">name</span>)
             }
-        },
-    )
-    .<span class="ident">into</span>()
+        }
+    };
+
+    <span class="ident">import</span>.<span class="ident">wrap</span>(<span class="string">&quot;Num&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>, <span class="ident">impl_</span>).<span class="ident">into</span>()
 }
 
 <span class="doccomment">/// Derives [`num_traits::Float`][float] for newtypes.  The inner type must already implement</span>
 <span class="doccomment">/// `Float`.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// [float]: https://docs.rs/num-traits/0.2/num_traits/float/trait.Float.html</span>
-<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Float</span>)]</span>
+<span class="attribute">#[<span class="ident">proc_macro_derive</span>(<span class="ident">Float</span>, <span class="ident">attributes</span>(<span class="ident">num_traits</span>))]</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">float</span>(<span class="ident">input</span>: <span class="ident">TokenStream</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">TokenStream</span> {
-    <span class="kw">let</span> <span class="ident">ast</span>: <span class="ident">syn</span>::<span class="ident">DeriveInput</span> <span class="op">=</span> <span class="ident">syn</span>::<span class="ident">parse</span>(<span class="ident">input</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">ast</span> <span class="op">=</span> <span class="macro">parse</span><span class="macro">!</span>(<span class="ident">input</span> <span class="kw">as</span> <span class="ident">syn</span>::<span class="ident">DeriveInput</span>);
     <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">ident</span>;
     <span class="kw">let</span> <span class="ident">inner_ty</span> <span class="op">=</span> <span class="ident">newtype_inner</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>.<span class="ident">data</span>).<span class="ident">expect</span>(<span class="ident">NEWTYPE_ONLY</span>);
-    <span class="ident">dummy_const_trick</span>(
-        <span class="string">&quot;Float&quot;</span>,
-        <span class="kw-2">&amp;</span><span class="ident">name</span>,
-        <span class="macro">quote</span><span class="macro">!</span> {
-            <span class="kw">impl</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span> <span class="kw">for</span> #<span class="ident">name</span> {
-                <span class="kw">fn</span> <span class="ident">nan</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">nan</span>())
-                }
-                <span class="kw">fn</span> <span class="ident">infinity</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">infinity</span>())
-                }
-                <span class="kw">fn</span> <span class="ident">neg_infinity</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">neg_infinity</span>())
-                }
-                <span class="kw">fn</span> <span class="ident">neg_zero</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">neg_zero</span>())
-                }
-                <span class="kw">fn</span> <span class="ident">min_value</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">min_value</span>())
-                }
-                <span class="kw">fn</span> <span class="ident">min_positive_value</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">min_positive_value</span>())
-                }
-                <span class="kw">fn</span> <span class="ident">max_value</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">max_value</span>())
-                }
-                <span class="kw">fn</span> <span class="ident">is_nan</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_nan</span>(<span class="self">self</span>.<span class="number">0</span>)
-                }
-                <span class="kw">fn</span> <span class="ident">is_infinite</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_infinite</span>(<span class="self">self</span>.<span class="number">0</span>)
-                }
-                <span class="kw">fn</span> <span class="ident">is_finite</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_finite</span>(<span class="self">self</span>.<span class="number">0</span>)
-                }
-                <span class="kw">fn</span> <span class="ident">is_normal</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_normal</span>(<span class="self">self</span>.<span class="number">0</span>)
-                }
-                <span class="kw">fn</span> <span class="ident">classify</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">num</span>::<span class="ident">FpCategory</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">classify</span>(<span class="self">self</span>.<span class="number">0</span>)
-                }
-                <span class="kw">fn</span> <span class="ident">floor</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">floor</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">ceil</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">ceil</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">round</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">round</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">trunc</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">trunc</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">fract</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">fract</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">abs</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">abs</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">signum</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">signum</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">is_sign_positive</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_sign_positive</span>(<span class="self">self</span>.<span class="number">0</span>)
-                }
-                <span class="kw">fn</span> <span class="ident">is_sign_negative</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_sign_negative</span>(<span class="self">self</span>.<span class="number">0</span>)
-                }
-                <span class="kw">fn</span> <span class="ident">mul_add</span>(<span class="self">self</span>, <span class="ident">a</span>: <span class="self">Self</span>, <span class="ident">b</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">mul_add</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">a</span>.<span class="number">0</span>, <span class="ident">b</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">recip</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">recip</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">powi</span>(<span class="self">self</span>, <span class="ident">n</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">powi</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">n</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">powf</span>(<span class="self">self</span>, <span class="ident">n</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">powf</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">n</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">sqrt</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">sqrt</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">exp</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">exp</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">exp2</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">exp2</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">ln</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">ln</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">log</span>(<span class="self">self</span>, <span class="ident">base</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">log</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">base</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">log2</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">log2</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">log10</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">log10</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">max</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">max</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">min</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">min</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">abs_sub</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">abs_sub</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">cbrt</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">cbrt</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">hypot</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">hypot</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">sin</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">sin</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">cos</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">cos</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">tan</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">tan</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">asin</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">asin</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">acos</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">acos</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">atan</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">atan</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">atan2</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">atan2</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">sin_cos</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="self">Self</span>, <span class="self">Self</span>) {
-                    <span class="kw">let</span> (<span class="ident">x</span>, <span class="ident">y</span>) <span class="op">=</span> <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">sin_cos</span>(<span class="self">self</span>.<span class="number">0</span>);
-                    (#<span class="ident">name</span>(<span class="ident">x</span>), #<span class="ident">name</span>(<span class="ident">y</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">exp_m1</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">exp_m1</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">ln_1p</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">ln_1p</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">sinh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">sinh</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">cosh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">cosh</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">tanh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">tanh</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">asinh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">asinh</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">acosh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">acosh</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">atanh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">atanh</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">integer_decode</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">u64</span>, <span class="ident">i16</span>, <span class="ident">i8</span>) {
-                    <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">integer_decode</span>(<span class="self">self</span>.<span class="number">0</span>)
-                }
-                <span class="kw">fn</span> <span class="ident">epsilon</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">epsilon</span>())
-                }
-                <span class="kw">fn</span> <span class="ident">to_degrees</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">to_degrees</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
-                <span class="kw">fn</span> <span class="ident">to_radians</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-                    #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> <span class="ident">_num_traits</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">to_radians</span>(<span class="self">self</span>.<span class="number">0</span>))
-                }
+
+    <span class="kw">let</span> <span class="ident">import</span> <span class="op">=</span> <span class="ident">NumTraits</span>::<span class="ident">new</span>(<span class="kw-2">&amp;</span><span class="ident">ast</span>);
+
+    <span class="kw">let</span> <span class="ident">impl_</span> <span class="op">=</span> <span class="macro">quote</span><span class="macro">!</span> {
+        <span class="kw">impl</span> #<span class="ident">import</span>::<span class="ident">Float</span> <span class="kw">for</span> #<span class="ident">name</span> {
+            <span class="kw">fn</span> <span class="ident">nan</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">nan</span>())
             }
-        },
-    )
-    .<span class="ident">into</span>()
+            <span class="kw">fn</span> <span class="ident">infinity</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">infinity</span>())
+            }
+            <span class="kw">fn</span> <span class="ident">neg_infinity</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">neg_infinity</span>())
+            }
+            <span class="kw">fn</span> <span class="ident">neg_zero</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">neg_zero</span>())
+            }
+            <span class="kw">fn</span> <span class="ident">min_value</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">min_value</span>())
+            }
+            <span class="kw">fn</span> <span class="ident">min_positive_value</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">min_positive_value</span>())
+            }
+            <span class="kw">fn</span> <span class="ident">max_value</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">max_value</span>())
+            }
+            <span class="kw">fn</span> <span class="ident">is_nan</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_nan</span>(<span class="self">self</span>.<span class="number">0</span>)
+            }
+            <span class="kw">fn</span> <span class="ident">is_infinite</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_infinite</span>(<span class="self">self</span>.<span class="number">0</span>)
+            }
+            <span class="kw">fn</span> <span class="ident">is_finite</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_finite</span>(<span class="self">self</span>.<span class="number">0</span>)
+            }
+            <span class="kw">fn</span> <span class="ident">is_normal</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_normal</span>(<span class="self">self</span>.<span class="number">0</span>)
+            }
+            <span class="kw">fn</span> <span class="ident">classify</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">num</span>::<span class="ident">FpCategory</span> {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">classify</span>(<span class="self">self</span>.<span class="number">0</span>)
+            }
+            <span class="kw">fn</span> <span class="ident">floor</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">floor</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">ceil</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">ceil</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">round</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">round</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">trunc</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">trunc</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">fract</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">fract</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">abs</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">abs</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">signum</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">signum</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">is_sign_positive</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_sign_positive</span>(<span class="self">self</span>.<span class="number">0</span>)
+            }
+            <span class="kw">fn</span> <span class="ident">is_sign_negative</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">bool</span> {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">is_sign_negative</span>(<span class="self">self</span>.<span class="number">0</span>)
+            }
+            <span class="kw">fn</span> <span class="ident">mul_add</span>(<span class="self">self</span>, <span class="ident">a</span>: <span class="self">Self</span>, <span class="ident">b</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">mul_add</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">a</span>.<span class="number">0</span>, <span class="ident">b</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">recip</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">recip</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">powi</span>(<span class="self">self</span>, <span class="ident">n</span>: <span class="ident">i32</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">powi</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">n</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">powf</span>(<span class="self">self</span>, <span class="ident">n</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">powf</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">n</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">sqrt</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">sqrt</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">exp</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">exp</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">exp2</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">exp2</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">ln</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">ln</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">log</span>(<span class="self">self</span>, <span class="ident">base</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">log</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">base</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">log2</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">log2</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">log10</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">log10</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">max</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">max</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">min</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">min</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">abs_sub</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">abs_sub</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">cbrt</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">cbrt</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">hypot</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">hypot</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">sin</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">sin</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">cos</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">cos</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">tan</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">tan</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">asin</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">asin</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">acos</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">acos</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">atan</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">atan</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">atan2</span>(<span class="self">self</span>, <span class="ident">other</span>: <span class="self">Self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">atan2</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="ident">other</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">sin_cos</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="self">Self</span>, <span class="self">Self</span>) {
+                <span class="kw">let</span> (<span class="ident">x</span>, <span class="ident">y</span>) <span class="op">=</span> <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">sin_cos</span>(<span class="self">self</span>.<span class="number">0</span>);
+                (#<span class="ident">name</span>(<span class="ident">x</span>), #<span class="ident">name</span>(<span class="ident">y</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">exp_m1</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">exp_m1</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">ln_1p</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">ln_1p</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">sinh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">sinh</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">cosh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">cosh</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">tanh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">tanh</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">asinh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">asinh</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">acosh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">acosh</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">atanh</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">atanh</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">integer_decode</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> (<span class="ident">u64</span>, <span class="ident">i16</span>, <span class="ident">i8</span>) {
+                <span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">integer_decode</span>(<span class="self">self</span>.<span class="number">0</span>)
+            }
+            <span class="kw">fn</span> <span class="ident">epsilon</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">epsilon</span>())
+            }
+            <span class="kw">fn</span> <span class="ident">to_degrees</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">to_degrees</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+            <span class="kw">fn</span> <span class="ident">to_radians</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
+                #<span class="ident">name</span>(<span class="op">&lt;</span>#<span class="ident">inner_ty</span> <span class="kw">as</span> #<span class="ident">import</span>::<span class="ident">Float</span><span class="op">&gt;</span>::<span class="ident">to_radians</span>(<span class="self">self</span>.<span class="number">0</span>))
+            }
+        }
+    };
+
+    <span class="ident">import</span>.<span class="ident">wrap</span>(<span class="string">&quot;Float&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">name</span>, <span class="ident">impl_</span>).<span class="ident">into</span>()
 }
+
+<span class="kw">mod</span> <span class="ident">test</span>;
 </pre></div>
 </section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "num_derive";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>
